@@ -1,0 +1,87 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'メイリオ', 'Meiryo',
+        'Hiragino Kaku Gothic ProN',
+        'ヒラギノ角ゴ ProN W3',
+        sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.11px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+a {
+    color: #00BCC5;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #8ababc;
+}
+
+header > nav {
+    padding: 24px 0 !important;
+}
+
+.login-input {
+    border-radius: 2px;
+    border: solid 1px #b2b2b2;
+    background-color: #ffffff;
+}
+
+.check-label {
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+.require-input-label {
+    border-radius: 2px;
+    background-color: #e2001b;
+    padding: 0 6px;
+}
+
+.require-input-label-text {
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.submit-button {
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    background-color: #00BCC5 !important;
+    border-radius: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: 0.1s;
+}
+
+.submit-button:hover {
+    opacity: 0.8;
+}
