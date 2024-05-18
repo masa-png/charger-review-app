@@ -56,11 +56,11 @@ header > nav {
 .require-input-label {
     border-radius: 2px;
     background-color: #e2001b;
-    padding: 0 6px;
+    padding: 3px;
 }
 
 .require-input-label-text {
-    font-size: 14px;
+    font-size: 12px;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
