@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'charger_review'),
+    'name' => env('APP_NAME', 'ChargerReview'),
 
     /*
     |--------------------------------------------------------------------------
