@@ -48,6 +48,27 @@ header > nav {
     background-color: #c60d31;
 }
 
+.multiple-items {
+    margin-bottom: 60px;
+}
+
+/* カルーセルスライダー */
+.slick-prev {
+    z-index: 1;
+}
+
+.slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+}
+
+.slick-prev:before,
+.slick-next::before {
+    font-size: 58px;
+    opacity: 0.8;
+    color: #434343;
+}
+/* カルーセルスライダーここまで */
 
 .login-input {
     border-radius: 2px;
