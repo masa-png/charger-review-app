@@ -37,6 +37,18 @@ header > nav {
     padding: 24px 0 !important;
 }
 
+.explanation {
+    background-color: #EDF6FB;
+}
+
+.title-border {
+    width: 6.5vw;
+    height: 0.5vw;
+    margin: 0 auto;
+    background-color: #c60d31;
+}
+
+
 .login-input {
     border-radius: 2px;
     border: solid 1px #b2b2b2;
