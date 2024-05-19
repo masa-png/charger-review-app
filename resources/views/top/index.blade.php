@@ -5,11 +5,12 @@
         <img src="{{ asset('img/USB-PD.png') }}" class="img-fluid">
     </div>
 
+    {{-- USB PDとは？ --}}
     <section class="explanation my-5 py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg12 text-center">
-                    <h1 class="section-title mb-4 fw-bold">USB PDとは？</h1>
+                    <h1 class="mb-4 fw-bold">USB PDとは？</h1>
                     <p class="title-border mb-5"></p>
                 </div>
             </div>
@@ -56,6 +57,43 @@
                         必要とする電力に充電器側が対応しているか「W数を」<br>
                         確認するようにしましょう！
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- 充電器の種類 --}}
+    <section class="category my-5 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg12 text-center">
+                    <h1 class="mb-4 fw-bold">充電器の種類</h1>
+                    <p class="title-border mb-5"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="multiple-items text-center">
+                <div>
+                    <img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}">
+                    <p>壁挿しタイプ</p>
+                </div>
+                <div>
+                    <img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}">
+                    <p>卓上タイプ</p>
+                </div>
+                <div>
+                    <img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}">
+                    <p>ワイヤレスタイプ</p>
+                </div>
+                <div>
+                    <img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}">
+                    <p>マグネットタイプ</p>
+                </div>
+                <div>
+                    <img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}">
+                    <p>ステーションタイプ</p>
                 </div>
             </div>
         </div>
