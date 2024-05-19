@@ -22,7 +22,7 @@
                     <img src="{{ asset('img/USB-PD.png') }}" class="img-fluid">
                 </div>
                 <div class="col-md-6">
-                    <h1 style="color: red" class="fw-bold mb-3">01</h1>
+                    <h1 style="color: red;" class="fw-bold mb-3">01</h1>
                     <h2>USB PDとは「USB Power Delivery」の略称！</h2>
                     <p>USB規格を作成している団体によって定められた、Type-Cに<br>
                         対応した給電規格のこと。最大100Wの電力を供給できるよう<br>
