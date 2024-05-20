@@ -3,7 +3,7 @@
     <div class="container pt-2">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <h2 class="mb-3">パスワードリセット</h2>
+                <h2 class="mb-3">パスワード再設定</h2>
 
                 <hr class="mb-4">
 
@@ -55,7 +55,7 @@
                     <hr class="mb-4">
 
                     <button type="submit" class="btn submit-button w-100 text-white">
-                        リセット
+                        再設定
                     </button>
                 </form>
             </div>
