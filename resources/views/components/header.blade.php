@@ -26,7 +26,7 @@
                             <a href="{{ route('reviews') }}" class="navlink fw-bold">レビュー一覧</a>
                         </li>
                         <li class="nav-item me-4">
-                            <a href="{{ route('top') }}" class="navlink fw-bold">お問い合わせ</a>
+                            <a href="{{ route('contact') }}" class="navlink fw-bold">お問い合わせ</a>
                         </li>
                     @else
                         <li class="nav-item me-4">
@@ -39,7 +39,7 @@
                             <a href="{{ route('reviews') }}" class="navlink fw-bold">レビュー一覧</a>
                         </li>
                         <li class="nav-item me-4">
-                            <a href="{{ route('top') }}" class="navlink fw-bold">お問い合わせ</a>
+                            <a href="{{ route('contact') }}" class="navlink fw-bold">お問い合わせ</a>
                         </li>
                     @endguest
                 </ul>
