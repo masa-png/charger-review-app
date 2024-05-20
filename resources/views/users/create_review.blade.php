@@ -3,14 +3,16 @@
     <div class="container pt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="mb-3">レビュー投稿</h1>
-
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('mypage') }}">マイページ</a></li>
                         <li class="breadcrumb-item active" aria-current="page">レビュー投稿</li>
                     </ol>
                 </nav>
+
+                <h1 class="mb-3">レビュー投稿</h1>
+
+                <hr class="mb-4">
 
                 <form action="" method="POST">
                     @csrf
