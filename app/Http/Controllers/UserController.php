@@ -39,4 +39,32 @@ class UserController extends Controller
 
         return to_route('mypage')->with('flash_message', 'ユーザー情報を更新しました。');
     }
+
+    public function edit_password()
+    {
+        return view('users.edit_password');
+    }
+
+    public function update_password(Request $request)
+    {
+        $validatedData = $request->validate([
+            'password' => 'required|confirmed'
+        ]);
+
+        $user = Auth::user();
+        if ($request->input('password') == $request->input('password_confirmation')) {
+            $user->password = bcrypt($request->input('password'));
+            $user->update();
+        } else {
+            return to_route('mypage.edit_password');
+        }
+
+        return to_route('mypage')->with('flash_message', 'パスワードを変更しました。');
+    }
+
+    public function destroy(Request $request)
+    {
+        Auth::user()->delete();
+        return redirect('/reviews')->with('flash_message', '退会が完了しました。');
+    }
 }
