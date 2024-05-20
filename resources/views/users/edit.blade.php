@@ -56,35 +56,6 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group row mb-3">
-                        <label for="password" class="col-md-5 col-form-label text-md-left fw-medium">新しいパスワード<span
-                                class="ms-1 require-input-label"><span
-                                    class="require-input-label-text">必須</span></span></label>
-                        <div class="col-md-7">
-                            <input type="password" name="password" id="password"
-                                class="form-control @error('password') is-invalid @enderror login-input" required
-                                autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="password-confirm"
-                            class="col-md-5 col-form-label text-md-left fw-medium">新しいパスワード(確認用)<span
-                                class="ms-1 require-input-label"><span
-                                    class="require-input-label-text">必須</span></span></label>
-
-                        <div class="col-md-7">
-                            <input type="password" name="password_confirmation" id="password-confirm"
-                                class="form-control login-input" required autocomplete="new-password">
-                        </div>
-                    </div> --}}
-
                     <hr class="my-4">
 
                     <button type="submit" class="btn submit-button w-100 text-white">
