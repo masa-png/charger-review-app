@@ -15,6 +15,17 @@ class UserController extends Controller
         return view('users.mypage', compact('user'));
     }
 
+    public function create_review()
+    {
+        $user = Auth::user();
+
+        return view('users.create_review', compact('user'));
+    }
+
+    public function store_review()
+    {
+    }
+
     public function edit(User $user)
     {
         $user = Auth::user();

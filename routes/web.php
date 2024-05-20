@@ -27,6 +27,7 @@ Route::get('reviews/show', [ReviewController::class, 'show'])->name('reviews.sho
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('users/mypage', 'mypage')->name('mypage');
+        Route::get('users/mypage/create/review', 'create_review')->name('mypage.create_review');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
         Route::put('users/mypage', 'update')->name('mypage.update');
         Route::get('users/mypage/password/edit', 'edit_password')->name('mypage.edit_password');

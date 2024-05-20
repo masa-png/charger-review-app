@@ -18,8 +18,11 @@
                         </div>
                         <div class="card-body">
                             <h6 class="card-subtitle mb-5 text-body-secondary">{{ $user->name }}</h6>
-                            <a href="{{ route('mypage.edit') }}" class="btn btn-primary d-block mb-3 py-2">レビューを投稿する</a>
+                            <a href="{{ route('mypage.create_review') }}"
+                                class="btn btn-primary d-block mb-3 py-2">レビューを投稿する</a>
+
                             <a href="{{ route('mypage.edit') }}" class="btn btn-secondary d-block mb-3 py-2">会員情報を編集する</a>
+
                             <a href="{{ route('mypage.edit_password') }}"
                                 class="btn btn-secondary d-block mb-3 py-2">パスワードを変更する</a>
 
