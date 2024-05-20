@@ -10,6 +10,12 @@
             <div class="col">
                 <h1 class="pt-5">投稿一覧</h1>
 
+                @if (session('flash_message'))
+                    <div class="alert alert-info">
+                        {{ session('flash_message') }}
+                    </div>
+                @endif
+
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card w-75 h-100">
