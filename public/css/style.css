@@ -85,6 +85,12 @@ header > nav {
     background-color: #ffffff;
 }
 
+.form-input {
+    border-radius: 2px;
+    border: solid 1px #b2b2b2;
+    background-color: #ffffff;
+}
+
 .login-input {
     border-radius: 2px;
     border: solid 1px #b2b2b2;
