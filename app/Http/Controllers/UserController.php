@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -58,8 +59,8 @@ class UserController extends Controller
 
     public function update_password(Request $request)
     {
-        $validatedData = $request->validate([
-            'password' => 'required|confirmed'
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = Auth::user();
