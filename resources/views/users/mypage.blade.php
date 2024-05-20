@@ -5,6 +5,12 @@
             <div class="col-md-5">
                 <h1>マイページ</h1>
 
+                @if (session('flash_message'))
+                    <div class="alert alert-success">
+                        {{ session('flash_message') }}
+                    </div>
+                @endif
+
                 <div class="container mt-3">
                     <div class="card text-center py-3 px-3" style="width: 26rem;">
                         <div>

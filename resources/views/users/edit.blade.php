@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container pt-2">
+    <div class="container pt-5">
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-3">
+                    {{-- <div class="form-group row mb-3">
                         <label for="password" class="col-md-5 col-form-label text-md-left fw-medium">新しいパスワード<span
                                 class="ms-1 require-input-label"><span
                                     class="require-input-label-text">必須</span></span></label>
@@ -83,7 +83,7 @@
                             <input type="password" name="password_confirmation" id="password-confirm"
                                 class="form-control login-input" required autocomplete="new-password">
                         </div>
-                    </div>
+                    </div> --}}
 
                     <hr class="my-4">
 

@@ -18,10 +18,25 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $user = Auth::user();
+
         return view('users.edit', compact('user'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, User $user)
     {
+        $user = Auth::user();
+
+        $user->name = $request->input('name') ? $request->input('name') : $user->name;
+        $user->email = $request->input('email') ? $request->input('email') : $user->email;
+        $user->update();
+
+        return to_route('mypage')->with('flash_message', 'ユーザー情報を更新しました。');
     }
 }
