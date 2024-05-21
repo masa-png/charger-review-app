@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="app">
+    <div id="app">
         @component('components.header')
         @endcomponent
 
