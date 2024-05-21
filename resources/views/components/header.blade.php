@@ -6,7 +6,7 @@
                 {{ config('app.name', 'Laravel') }}
             </a>
             @auth
-                <a href="{{ route('logout') }}" class="link-dark"
+                <a href="{{ route('logout') }}" class="link-secondary ms-4"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                     @csrf
