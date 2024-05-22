@@ -3,7 +3,7 @@
     <div class="container pt-5">
         <div class="row justify-content-center mb-4">
             <div class="col-md-5">
-                <h1>マイページ</h1>
+                <h2>マイページ</h2>
 
                 @if (session('flash_message'))
                     <div class="alert alert-success">

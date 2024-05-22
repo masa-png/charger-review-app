@@ -3,7 +3,7 @@
     <div class="container pt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="mb-3">お問い合わせ</h1>
+                <h2 class="mb-3">お問い合わせ</h2>
 
                 <hr class="mb-4">
 

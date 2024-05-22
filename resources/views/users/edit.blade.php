@@ -10,7 +10,7 @@
                     </ol>
                 </nav>
 
-                <h1 class="mb-3">会員情報の編集</h1>
+                <h2 class="mb-3">会員情報の編集</h2>
 
                 <hr class="mb-4">
 

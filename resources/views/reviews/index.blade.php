@@ -8,7 +8,7 @@
             </div>
 
             <div class="col">
-                <h1 class="pt-5">投稿一覧</h1>
+                <h2 class="pt-5">投稿一覧</h2>
 
                 @if (session('flash_message'))
                     <div class="alert alert-info">
