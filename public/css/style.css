@@ -16,16 +16,16 @@ body {
 }
 
 h1 {
-    font-size: 26px;
+    font-size: 3rem;
     font-weight: bold;
     font-stretch: normal;
-    font-style: normal;
+    font-style:normal;
     line-height: normal;
     letter-spacing: -0.13px;
 }
 
 h2 {
-    font-size: 22px;
+    font-size: 1.5rem;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
@@ -57,13 +57,29 @@ header > nav {
     background-color: #c60d31;
 }
 
+/* カルーセルスライダー */
 .multiple-items {
+    height: 200px;
     margin-bottom: 60px;
+    position: relative;
 }
 
-/* カルーセルスライダー */
-.slick-prev {
+.slick-slide {
+    width: 100%;
+}
+
+.slick-slide > a > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.slick-arrow {
     z-index: 1;
+}
+
+.slick-next {
+    right: 0;
 }
 
 .slick-prev, .slick-next {
