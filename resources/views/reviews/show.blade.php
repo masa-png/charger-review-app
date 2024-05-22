@@ -3,9 +3,40 @@
     <div class="container pt-3">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <div>
-                    <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-theme="dark">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail d-block">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail d-block">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail d-block">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                {{-- <div>
+                    <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail">
+                </div> --}}
 
                 <div class="card mt-5" style="width: 18rem;">
                     <div class="card-body">
@@ -26,7 +57,7 @@
 
             <div class="col-md-6">
                 <div class="mb-5">
-                    <h3>コストパフォーマンスが抜群</h3>
+                    <h3 class="fw-bold">コストパフォーマンスが抜群</h3>
                     <p class="fs-5 mb-2"><span class="review-score-color">★★★★★</span><span
                             class="review-score-blank-color"></span></p>
                     <p>価格に見合った性能をもつ充電器で、2ポートついていて最大65W出力、スマホとPCを充電するのにちょうどいい!!</p>
@@ -35,10 +66,37 @@
 
                 @guest
                     <div class="mb-4">
-                        ユーザー登録していただくとレビューに対してコメントができます。
+                        <p>ユーザー登録していただくとレビューに対してコメントができます。</p>
                     </div>
                 @endguest
 
+                {{-- コメント欄 --}}
+                <div class="form-group">
+                    <h4 class="fw-bold">1件のコメント</h4>
+                    <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
+                    <div class="mt-3">
+                        <button type="button" class="btn btn-primary">コメント</button>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <div>
+                        <div class="comment-body">
+                            <h5 class="mt-0">
+                                <a href="#">ユーザー名</a>
+                                <a href="#">
+                                    <i class="fa fa-reply"></i>
+                                </a>
+                            </h5>
+                            テストコメント
+                        </div>
+                        <div>
+                            <h5 class="mt-3">
+                                <a href="#">~件の返信</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
