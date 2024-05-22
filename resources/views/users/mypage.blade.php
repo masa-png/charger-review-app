@@ -17,6 +17,11 @@
                             <img src="" class="card-img-top" alt="プロフィール画像">
                         </div>
                         <div class="card-body">
+                            <label for="review-img" class="mb-3">画像をアップロード</label>
+                            <input id="review-img" name="file" type="file" class="form-control form-input"></input>
+                        </div>
+
+                        <div class="card-body">
                             <h6 class="card-subtitle mb-5 text-body-secondary">{{ $user->name }}</h6>
                             <a href="{{ route('mypage.create_review') }}"
                                 class="btn btn-primary d-block mb-3 py-2">レビューを投稿する</a>
@@ -36,18 +41,26 @@
                 </div>
 
                 <div class="container mt-4">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a href="" class="nav-link active" aria-current="page">投稿した記事</a>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="post-tab" data-bs-toggle="tab"
+                                data-bs-target="#post-tab-pane" type="button" role="tab" aria-controls="post-tab-pane"
+                                aria-selected="true">投稿した記事</button>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link active" aria-current="page">記事</a>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="good-tab" data-bs-toggle="tab" data-bs-target="#good-tab-pane"
+                                type="button" role="tab" aria-controls="good-tab-pane"
+                                aria-selected="false">いいねした記事</button>
                         </li>
                     </ul>
-                    <p class="mt-3">投稿した記事はありません</p>
-                </div>
+                    <div class="tab-content border border-2 p-5" id="myTabContent">
+                        <div class="tab-pane fade show active" id="post-tab-pane" role="tabpanel" aria-labelledby="post-tab"
+                            tabindex="0">投稿した記事はありません</div>
 
+                        <div class="tab-pane fade" id="good-tab-pane" role="tabpanel" aria-labelledby="good-tab"
+                            tabindex="0">いいねした記事はありません</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
