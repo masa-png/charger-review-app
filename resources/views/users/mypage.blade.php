@@ -3,7 +3,7 @@
     <div class="container pt-5">
         <div class="row justify-content-center mb-4">
             <div class="col-md-5">
-                <h2>マイページ</h2>
+                <h2 class="text-center">マイページ</h2>
 
                 @if (session('flash_message'))
                     <div class="alert alert-success">
@@ -12,7 +12,7 @@
                 @endif
 
                 <div class="container mt-3">
-                    <div class="card text-center py-3 px-3" style="width: 26rem;">
+                    <div class="card text-center m-auto py-3 px-3" style="width: 26rem;">
                         <div>
                             <img src="" class="card-img-top" alt="プロフィール画像">
                         </div>
