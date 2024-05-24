@@ -18,16 +18,17 @@
 
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                        <div class="card w-75 h-100">
+                        <div class="card h-100">
                             <a href="{{ route('reviews.show') }}">
                                 <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail card-img-top">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">メーカー名:</h5>
-                                <h5 class="card-title">商品名:</h5>
-                                <h5 class="card-title">W数:</h5>
-                                <h5 class="card-title">値段:</h5>
-                                <h5 class="card-title">投稿者:</h5>
+                                <h4 class="card-title">メーカー名:CIO</h4>
+                                <h4 class="card-subtitle mb-2 text-body-secondary">NovaPort</h4>
+                                <h4 class="card-title">種類:</h4>
+                                <h4 class="card-title">W数:</h4>
+                                <h4 class="card-title">値段:</h4>
+                                <small class="text-body-secondary">ユーザー名</small>
                             </div>
                             <div class="card-footer">
                                 <small class="text-body-secondary">Last updated 3 mins ago</small>
