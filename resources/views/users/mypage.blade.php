@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <h6 class="card-subtitle mb-5 text-body-secondary">{{ $user->name }}</h6>
                             <a href="{{ route('mypage.create_review') }}"
-                                class="btn btn-primary d-block mb-3 py-2">レビューを投稿する</a>
+                                class="btn submit-button d-block mb-3 py-2 text-white">レビューを投稿する</a>
 
                             <a href="{{ route('mypage.edit') }}" class="btn btn-secondary d-block mb-3 py-2">会員情報を編集する</a>
 
@@ -53,11 +53,11 @@
                                 aria-selected="false">いいねした記事</button>
                         </li>
                     </ul>
-                    <div class="tab-content border border-2 p-5" id="myTabContent">
-                        <div class="tab-pane fade show active" id="post-tab-pane" role="tabpanel" aria-labelledby="post-tab"
-                            tabindex="0">投稿した記事はありません</div>
+                    <div class="tab-content border border-2" id="myTabContent">
+                        <div class="tab-pane fade show active my-3 mx-3" id="post-tab-pane" role="tabpanel"
+                            aria-labelledby="post-tab" tabindex="0">投稿した記事はありません</div>
 
-                        <div class="tab-pane fade" id="good-tab-pane" role="tabpanel" aria-labelledby="good-tab"
+                        <div class="tab-pane fade my-3 mx-3" id="good-tab-pane" role="tabpanel" aria-labelledby="good-tab"
                             tabindex="0">いいねした記事はありません</div>
                     </div>
                 </div>
