@@ -30,7 +30,7 @@ a {
 }
 
 a:hover {
-    color: #8ababc;
+    opacity: 0.8;
 }
 
 header > nav {
@@ -102,6 +102,83 @@ header > nav {
     color: #434343;
 }
 /* カルーセルスライダーここまで */
+.header-search-input {
+    border-radius: 2px;
+    border: solid 1px #e5e5e5;
+}
+
+.header-search-button {
+    border-radius: 2px;
+    background-color: #00BCC5 !important;
+    transition: 0.1s;
+}
+
+.header-search-button:hover {
+    opacity: 0.8;
+}
+
+.header-search-icon {
+    color: #ffffff;
+}
+
+.page-item:first-child > .page-link:hover,
+.page-item:last-child > .page-link:hover {
+    opacity: 0.8;
+}
+
+.page-item:first-child .disabled > .page-link,
+.page-item:last-child .disabled >.page-link {
+    background-color: #e5e5e5;
+    border-color: #e5e5e5;
+    color: #b2b2b2;
+}
+
+.page-item {
+    margin: 0 3px;
+}
+
+.page-item .active > .page-link {
+    background-color: #e5e5e5;
+    border-color: #e5e5e5;
+    color: #b2b2b2 !important;
+}
+
+.page-item:first-child {
+    margin: 0 3px 0 0;
+}
+
+.page-item:last-child {
+    margin: 0 0 0 3px;
+}
+
+.page-link {
+    border-radius: 2px;
+    color: #00BCC5;
+}
+
+.page-link:hover {
+    color: #00a3ac;
+}
+
+.page-link:focus {
+    color: #00a3ac;
+}
+
+.active > .page-link {
+    background-color: #00BCC5;
+    border-color: #00BCC5;
+}
+
+.active > .page-link:hover {
+    color: #ffffff;
+}
+
+.pagination > .page-item:not(:first-child).page-item:not(:last-child).disabled > .page-link {
+    background-color: transparent;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
 
 .review-input {
     border-radius: 2px;
