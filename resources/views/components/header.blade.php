@@ -1,10 +1,17 @@
 <header>
     <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container">
-            <a class="navber-brand nav-link" href="{{ url('/') }}">
+            <a class="navber-brand nav-link me-3" href="{{ url('/') }}">
                 {{-- <img src="{{ asset('img/logo.jpg') }}"> --}}
                 {{ config('app.name', 'Laravel') }}
             </a>
+            <form action="{{ route('products') }}" method="GET">
+                <div class="d-flex">
+                    <input class="form-control header-search-input me-1" placeholder="何をお探しですか？" name="keyword">
+                    <button type="submit" class="btn header-search-button"><i
+                            class="fas fa-search header-search-icon"></i></button>
+                </div>
+            </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
