@@ -31,7 +31,7 @@
                                 <a href="{{ route('login') }}" class="nav-link fw-bold">ログイン</a>
                             </li>
                             <li class="nav-item me-4">
-                                <a href="{{ route('reviews') }}" class="nav-link fw-bold">レビュー一覧</a>
+                                <a href="{{ route('products') }}" class="nav-link fw-bold">投稿一覧</a>
                             </li>
                             <li class="nav-item me-4">
                                 <a href="{{ route('contact') }}" class="nav-link fw-bold">お問い合わせ</a>
@@ -61,7 +61,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item me-4">
-                                <a href="{{ route('reviews') }}" class="nav-link fw-bold">レビュー一覧</a>
+                                <a href="{{ route('products') }}" class="nav-link fw-bold">投稿一覧</a>
                             </li>
                             <li class="nav-item me-4">
                                 <a href="{{ route('contact') }}" class="nav-link fw-bold">お問い合わせ</a>
