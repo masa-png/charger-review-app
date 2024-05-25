@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,9 @@ require __DIR__ . '/auth.php';
 
 Route::get('/', [TopController::class, 'index'])->name('top');
 
+Route::get('products', [ProductController::class, 'index'])->name('products');
+
 Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
-Route::get('reviews/show', [ReviewController::class, 'show'])->name('reviews.show');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 
