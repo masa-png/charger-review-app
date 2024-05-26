@@ -5,7 +5,7 @@
                 {{-- <img src="{{ asset('img/logo.jpg') }}"> --}}
                 {{ config('app.name', 'Laravel') }}
             </a>
-            <form action="{{ route('products') }}" method="GET">
+            <form action="{{ route('products.index') }}" method="GET">
                 <div class="d-flex">
                     <input class="form-control header-search-input me-1" placeholder="何をお探しですか？" name="keyword">
                     <button type="submit" class="btn header-search-button"><i
@@ -38,10 +38,10 @@
                                 <a href="{{ route('login') }}" class="nav-link fw-bold">ログイン</a>
                             </li>
                             <li class="nav-item me-4">
-                                <a href="{{ route('products') }}" class="nav-link fw-bold">投稿一覧</a>
+                                <a href="{{ route('products.index') }}" class="nav-link fw-bold">投稿一覧</a>
                             </li>
                             <li class="nav-item me-4">
-                                <a href="{{ route('contact') }}" class="nav-link fw-bold">お問い合わせ</a>
+                                <a href="{{ route('contact.index') }}" class="nav-link fw-bold">お問い合わせ</a>
                             </li>
                         @else
                             <li class="nav-item me-4">
@@ -68,10 +68,10 @@
                                 </ul>
                             </li>
                             <li class="nav-item me-4">
-                                <a href="{{ route('products') }}" class="nav-link fw-bold">投稿一覧</a>
+                                <a href="{{ route('products.index') }}" class="nav-link fw-bold">投稿一覧</a>
                             </li>
                             <li class="nav-item me-4">
-                                <a href="{{ route('contact') }}" class="nav-link fw-bold">お問い合わせ</a>
+                                <a href="{{ route('contact.index') }}" class="nav-link fw-bold">お問い合わせ</a>
                             </li>
                         @endguest
                     </ul>
