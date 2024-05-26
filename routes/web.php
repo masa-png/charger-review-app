@@ -22,11 +22,11 @@ require __DIR__ . '/auth.php';
 
 Route::get('/', [TopController::class, 'index'])->name('top');
 
-Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
 
-Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
+Route::get('reviews', [ReviewController::class, 'index'])->name('reviews.index');
 
-Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(UserController::class)->group(function () {

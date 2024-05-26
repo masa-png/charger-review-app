@@ -10,7 +10,7 @@
                 @if ($vendor !== null)
                     <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('products') }}">投稿一覧</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">投稿一覧</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $vendor->name }}</li>
                         </ol>
                     </nav>
@@ -18,11 +18,19 @@
                 @elseif ($wattage !== null)
                     <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('products') }}">投稿一覧</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">投稿一覧</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $wattage->watt }}</li>
                         </ol>
                     </nav>
                     <h2 class="mb-4">{{ $wattage->watt }}Wの投稿一覧{{ $total_count }}件</h2>
+                @elseif ($keyword !== null)
+                    <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">投稿一覧</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $keyword }}</li>
+                        </ol>
+                    </nav>
+                    <h2 class="mb-4">{{ $keyword }}の検索結果{{ $total_count }}件</h2>
                 @else
                     <h2 class="pt-5 mb-4">投稿一覧</h2>
                 @endif
@@ -37,14 +45,14 @@
                     @foreach ($products as $product)
                         <div class="col">
                             <div class="card h-100">
-                                <a href="{{ route('reviews', $product) }}">
+                                <a href="{{ route('reviews.index', ['review' => $product->id]) }}">
                                     <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail card-img-top">
                                 </a>
                                 <div class="card-body">
                                     <h4 class="card-title">メーカー名 {{ $product->vendor->name }}</h4>
                                     <h4 class="card-subtitle mb-2 text-body-secondary">{{ $product->name }}</h4>
-                                    <h4 class="card-title">種類 {{ $product->type->name }}タイプ</h4>
-                                    <h4 class="card-title">W数 {{ $product->wattage->watt }}W</h4>
+                                    <p class="card-title">種類 {{ $product->type->name }}タイプ</p>
+                                    <p class="card-title">W数 {{ $product->wattage->watt }}W</p>
                                     <label class="card-title">¥{{ number_format($product->price) }}</label><br>
                                     <small class="text-body-secondary">{{ $user->name }}</small>
                                 </div>
