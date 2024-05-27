@@ -42,8 +42,7 @@ class ProductController extends Controller
         $vendors = Vendor::all();
         $wattages = Wattage::all();
 
-        $user = Auth::user();
-        return view('products.index', compact('products', 'vendor', 'vendors', 'wattage', 'wattages', 'total_count', 'keyword', 'user'));
+        return view('products.index', compact('products', 'vendor', 'vendors', 'wattage', 'wattages', 'total_count', 'keyword'));
     }
 
     // /**
@@ -66,11 +65,11 @@ class ProductController extends Controller
      */
     public static function update(Request $request, Product $product)
     {
-        // $product->name = $request->input('name');
-        // $product->price = $request->input('price');
-        // $product->vendor_id = $request->input('vendor_id');
-        // $product->wattage_id = $request->input('wattage_id');
-        // $product->type_id = $request->input('type_id');
-        // $product->update();
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->vendor_id = $request->input('vendor_id');
+        $product->wattage_id = $request->input('wattage_id');
+        $product->type_id = $request->input('type_id');
+        $product->update();
     }
 }
