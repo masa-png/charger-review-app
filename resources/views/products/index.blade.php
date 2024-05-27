@@ -54,7 +54,6 @@
                                     <p class="card-title">種類 {{ $product->type->name }}タイプ</p>
                                     <p class="card-title">W数 {{ $product->wattage->watt }}W</p>
                                     <label class="card-title">¥{{ number_format($product->price) }}</label><br>
-                                    <small class="text-body-secondary">{{ $user->name }}</small>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-body-secondary">{{ $product->created_at }}</small>
