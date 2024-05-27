@@ -14,38 +14,34 @@
 
                 <hr class="mb-4">
 
-                <form action="" method="POST">
+                <form action="{{ route('reviews.store') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
-                        <select class="form-select review-input" aria-label="メーカー名">
-                            <option selected>Anker</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select name="vendor_id" class="form-select review-input" aria-label="メーカー名">
+                            @foreach ($vendors as $vendor)
+                                <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="product" type="text" class="form-control review-input" value="{{ old('product') }}"
+                        <input name="name" type="text" class="form-control review-input" value="{{ old('name') }}"
                             autofocus placeholder="商品名">
                     </div>
 
                     <div class="form-group mb-3">
-                        <select class="form-select review-input" aria-label="種類">
-                            <option value="" selected>壁挿しタイプ</option>
-                            <option value="">卓上タイプ</option>
-                            <option value="">ワイヤレスタイプ</option>
-                            <option value="">マグネットタイプ</option>
-                            <option value="">ステーションタイプ</option>
+                        <select name="type_id" class="form-select review-input" aria-label="種類">
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
-                        <select class="form-select review-input" aria-label="W数">
-                            <option selected>15W〜20W</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select name="wattage_id" class="form-select review-input" aria-label="W数">
+                            @foreach ($wattages as $wattage)
+                                <option value="{{ $wattage->id }}">{{ $wattage->watt }}W</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -54,29 +50,30 @@
                             placeholder="値段">
                     </div>
 
-                    <div class="form-group mb-3">
+                    {{-- <div class="form-group mb-3">
                         <input type="text" class="form-control review-input" placeholder="商品のリンク先">
-                    </div>
+                    </div> --}}
 
                     <div class="form-group mb-3">
-                        <select class="form-select review-input" aria-label="★評価">
-                            <option value="1" selected>★</option>
-                            <option value="2">★★</option>
-                            <option value="3">★★★</option>
+                        <select name="score" class="form-select review-input review-score-color" aria-label="★評価">
+                            <option value="5" selected>★★★★★</option>
                             <option value="4">★★★★</option>
-                            <option value="5">★★★★★</option>
+                            <option value="3">★★★</option>
+                            <option value="2">★★</option>
+                            <option value="1">★</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="title" type="text" class="form-control review-input" placeholder="タイトル">
+                        <input name="title" type="text" class="form-control review-input" value="{{ old('title') }}"
+                            placeholder="タイトル">
                     </div>
 
                     <div class="form-group mb-3">
-                        <textarea name="content" class="form-control review-input" placeholder="レビュー内容"></textarea>
+                        <textarea name="content" class="form-control review-input" value="{{ old('content') }}" placeholder="レビュー内容"></textarea>
                     </div>
 
-                    <div class="row my-3">
+                    {{-- <div class="row my-3">
                         <div class="card w-75 m-auto">
                             <div class="card-body">
                                 <label for="review-img" class="mb-3">画像をアップロード</label>
@@ -84,7 +81,7 @@
                                     class="form-control review-input"></input>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <button type="submit" class="btn submit-button w-100 text-white">

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use App\Models\User;
+use App\Models\Vendor;
+use App\Models\Wattage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
@@ -18,9 +21,12 @@ class UserController extends Controller
 
     public function create_review()
     {
+        $vendors = Vendor::all();
+        $wattages = Wattage::all();
+        $types = Type::all();
         $user = Auth::user();
 
-        return view('users.create_review', compact('user'));
+        return view('users.create_review', compact('user', 'vendors', 'wattages', 'types'));
     }
 
     public function edit(User $user)
