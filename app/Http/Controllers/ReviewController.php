@@ -42,4 +42,21 @@ class ReviewController extends Controller
 
         return to_route('mypage')->with('flash_message', 'レビュー記事を投稿しました。');
     }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public static function update(Request $request, Review $review, Product $product)
+    {
+        ProductController::update($request, $product);
+
+        $review->name = $request->input('title');
+        $review->price = $request->input('content');
+        $review->vendor_id = $request->input('score');
+        $review->product_id = $review->product_id;
+        $review->user_id = Auth::id();
+        $review->update();
+
+        return to_route('mypage')->with('flash_message', 'レビュー記事を編集しました。');
+    }
 }

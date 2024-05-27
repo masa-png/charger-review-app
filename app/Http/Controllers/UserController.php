@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Review;
 use App\Models\Type;
 use App\Models\User;
 use App\Models\Vendor;
@@ -16,7 +18,9 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('users.mypage', compact('user'));
+        $reviews = Review::where('user_id', $user->id)->get();
+
+        return view('users.mypage', compact('user', 'reviews'));
     }
 
     public function create_review()
@@ -27,6 +31,19 @@ class UserController extends Controller
         $user = Auth::user();
 
         return view('users.create_review', compact('user', 'vendors', 'wattages', 'types'));
+    }
+
+    public function edit_review(Request $request)
+    {
+        $review = Review::find($request->review);
+        $product = Product::find($request->review);
+
+        $vendors = Vendor::all();
+        $wattages = Wattage::all();
+        $types = Type::all();
+        $user = Auth::user();
+
+        return view('users.edit_review', compact('review', 'product', 'vendors', 'wattages', 'types', 'user'));
     }
 
     public function edit(User $user)

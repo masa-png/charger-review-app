@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('users/mypage', 'mypage')->name('mypage');
         Route::get('users/mypage/create/review', 'create_review')->name('mypage.create_review');
+        Route::get('users/mypage/edit/review', 'edit_review')->name('mypage.edit_review');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
         Route::put('users/mypage', 'update')->name('mypage.update');
         Route::get('users/mypage/password/edit', 'edit_password')->name('mypage.edit_password');
@@ -41,5 +42,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::controller(ReviewController::class)->group(function () {
         Route::post('reviews/store', 'store')->name('reviews.store');
+        Route::put('reviews/update/{review}/{product}', 'update')->name('reviews.update');
     });
 });
