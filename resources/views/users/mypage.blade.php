@@ -41,26 +41,43 @@
                 </div>
 
                 <div class="container mt-4">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="post-tab" data-bs-toggle="tab"
-                                data-bs-target="#post-tab-pane" type="button" role="tab" aria-controls="post-tab-pane"
-                                aria-selected="true">投稿した記事</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="good-tab" data-bs-toggle="tab" data-bs-target="#good-tab-pane"
-                                type="button" role="tab" aria-controls="good-tab-pane"
-                                aria-selected="false">いいねした記事</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content border border-2" id="myTabContent">
-                        <div class="tab-pane fade show active my-3 mx-3" id="post-tab-pane" role="tabpanel"
-                            aria-labelledby="post-tab" tabindex="0">投稿した記事はありません</div>
-
-                        <div class="tab-pane fade my-3 mx-3" id="good-tab-pane" role="tabpanel" aria-labelledby="good-tab"
-                            tabindex="0">いいねした記事はありません</div>
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="true" href="">投稿した記事</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">いいねした記事</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            @if ($reviews !== null)
+                                @foreach ($reviews as $review)
+                                    <div class="mt-4">
+                                        <small class="text-body-secondary">{{ $review->updated_at }}</small><br>
+                                        <h4 class="card-subtitle my-2 text-body-secondary">{{ $review->product->name }}
+                                        </h4>
+                                        <p>
+                                            <a
+                                                href="{{ route('reviews.index', ['review' => $review->product->id]) }}">{{ $review->title }}</a>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('mypage.edit_review', ['review' => $review->product_id]) }}">
+                                            <i class="fa fa-reply"></i>
+                                        </a>
+                                    </div>
+                                    <hr>
+                                @endforeach
+                            @else
+                                <p>投稿したレビュー記事はありません。</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
