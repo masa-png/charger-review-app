@@ -7,6 +7,7 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -23,7 +24,7 @@ class ReviewController extends Controller
     // /**
     //  * Store a newly created resource in storage.
     //  */
-    public function store(Request $request)
+    public function store(ReviewRequest $request)
     {
         $review = new Review();
 

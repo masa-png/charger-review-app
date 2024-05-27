@@ -25,8 +25,15 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="name" type="text" class="form-control review-input" value="{{ old('name') }}"
-                            autofocus placeholder="商品名">
+                        <input name="name" type="text"
+                            class="form-control @error('name') is-invalid @enderror review-input"
+                            value="{{ old('name') }}" required autofocus placeholder="商品名">
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>商品名は50文字以内で入力してください。</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3">
@@ -47,7 +54,7 @@
 
                     <div class="form-group mb-3">
                         <input name="price" type="number" class="form-control review-input" value="{{ old('price') }}"
-                            placeholder="値段">
+                            required placeholder="値段">
                     </div>
 
                     {{-- <div class="form-group mb-3">
@@ -65,12 +72,26 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="title" type="text" class="form-control review-input" value="{{ old('title') }}"
-                            placeholder="タイトル">
+                        <input name="title" type="text"
+                            class="form-control @error('title') is-invalid @enderror review-input"
+                            value="{{ old('title') }}" required placeholder="タイトル">
+
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>タイトルは50文字以内で入力してください。</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="form-group mb-3">
-                        <textarea name="content" class="form-control review-input" value="{{ old('content') }}" placeholder="レビュー内容"></textarea>
+                        <textarea name="content" class="form-control @error('content') is-invalid @enderror review-input"
+                            value="{{ old('content') }}" required placeholder="レビュー内容"></textarea>
+
+                        @error('content')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>レビュー内容は200文字以内で入力してください。</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     {{-- <div class="row my-3">
