@@ -38,4 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('users/mypage/password', 'update_password')->name('mypage.update_password');
         Route::delete('users/mypage/delete', 'destroy')->name('mypage.destroy');
     });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::post('reviews/store', 'store')->name('reviews.store');
+    });
 });
