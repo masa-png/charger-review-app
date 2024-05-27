@@ -84,8 +84,8 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <textarea name="content" class="form-control @error('content') is-invalid @enderror review-input"
-                            value="{{ old('content') }}" required placeholder="レビュー内容"></textarea>
+                        <textarea name="content" class="form-control @error('content') is-invalid @enderror review-input" required
+                            placeholder="レビュー内容">{{ old('content') }}</textarea>
 
                         @error('content')
                             <span class="invalid-feedback" role="alert">
