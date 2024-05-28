@@ -2,7 +2,7 @@
 @section('content')
     <div class="container pt-5">
         <div class="row justify-content-center mb-4">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h2 class="text-center">マイページ</h2>
 
                 @if (session('flash_message'))
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="container mt-4">
-                    <div class="card">
+                    <div class="card mb-3">
                         <div class="card-header text-center">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
@@ -76,6 +76,7 @@
                             @endif
                         </div>
                     </div>
+                    {{ $reviews->appends(request()->query())->links() }}
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $reviews = Review::where('user_id', $user->id)->get();
+        $reviews = Review::where('user_id', $user->id)->paginate(2);
 
         return view('users.mypage', compact('user', 'reviews'));
     }
