@@ -42,6 +42,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::controller(ReviewController::class)->group(function () {
         Route::post('reviews/store', 'store')->name('reviews.store');
-        Route::put('reviews/update/{review}/{product}', 'update')->name('reviews.update');
+        Route::put('reviews/update/{review}', 'update')->name('reviews.update');
     });
 });

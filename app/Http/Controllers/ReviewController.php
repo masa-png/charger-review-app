@@ -46,15 +46,16 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public static function update(Request $request, Review $review, Product $product)
+    public static function update(Review $review, ReviewRequest $request)
     {
+        $product = Product::find($review->product_id);
         ProductController::update($request, $product);
 
-        $review->name = $request->input('title');
-        $review->price = $request->input('content');
-        $review->vendor_id = $request->input('score');
-        $review->product_id = $review->product_id;
-        $review->user_id = Auth::id();
+        $review->title = $request->input('title');
+        $review->content = $request->input('content');
+        $review->score = $request->input('score');
+        $review->product_id = $request->input('product_id');
+        $review->user_id = $request->input('user_id');
         $review->update();
 
         return to_route('mypage')->with('flash_message', 'レビュー記事を編集しました。');

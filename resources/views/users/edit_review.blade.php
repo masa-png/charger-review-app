@@ -14,8 +14,7 @@
 
                 <hr class="mb-4">
 
-                <form action="{{ route('reviews.update', ['review' => $review->id, 'product' => $product->id]) }}"
-                    method="POST">
+                <form action="{{ route('reviews.update', $review) }}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -47,9 +46,9 @@
                         <select name="type_id" class="form-select review-input" aria-label="種類">
                             @foreach ($types as $type)
                                 @if ($type->id == $product->type_id)
-                                    <option value="{{ $type->id }}" selected>{{ $type->name }}</option>
+                                    <option value="{{ $type->id }}" selected>{{ $type->name }}タイプ</option>
                                 @else
-                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    <option value="{{ $type->id }}">{{ $type->name }}タイプ</option>
                                 @endif
                             @endforeach
                         </select>
@@ -59,9 +58,9 @@
                         <select name="wattage_id" class="form-select review-input" aria-label="W数">
                             @foreach ($wattages as $wattage)
                                 @if ($wattage->id == $product->wattage_id)
-                                    <option value="{{ $wattage->id }}" selected>{{ $wattage->watt }}</option>
+                                    <option value="{{ $wattage->id }}" selected>{{ $wattage->watt }}W</option>
                                 @else
-                                    <option value="{{ $wattage->id }}">{{ $wattage->watt }}</option>
+                                    <option value="{{ $wattage->id }}">{{ $wattage->watt }}W</option>
                                 @endif
                             @endforeach
                         </select>
@@ -78,7 +77,7 @@
 
                     <div class="form-group mb-3">
                         <select name="score" class="form-select review-input review-score-color" aria-label="★評価">
-                            <option value="5" selected>★★★★★</option>
+                            <option value="5">★★★★★</option>
                             <option value="4">★★★★</option>
                             <option value="3">★★★</option>
                             <option value="2">★★</option>
@@ -118,6 +117,8 @@
                             </div>
                         </div>
                     </div> --}}
+                    <input type="hidden" name="product_id" value="{{ $review->product_id }}">
+                    <input type="hidden" name="user_id" value="{{ $review->user_id }}">
 
                     <div class="form-group">
                         <button type="submit" class="btn submit-button w-100 text-white">
