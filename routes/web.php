@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TopController;
@@ -43,5 +44,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(ReviewController::class)->group(function () {
         Route::post('reviews/store', 'store')->name('reviews.store');
         Route::put('reviews/update/{review}', 'update')->name('reviews.update');
+    });
+
+    Route::controller(CommentController::class)->group(function () {
+        Route::post('comments/store/{review}', 'store')->name('comments.store');
     });
 });

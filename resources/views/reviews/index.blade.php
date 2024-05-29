@@ -68,14 +68,19 @@
                 @endguest
 
                 {{-- コメント欄 --}}
-                <div class="form-group">
-                    <h4 class="fw-bold">1件のコメント</h4>
-                    <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
-                    <div class="mt-3 text-end">
-                        <a class="btn btn-outline-secondary me-3" href="#" role="button">キャンセル</a>
-                        <a class="btn submit-button text-white" href="#" role="button">コメント</a>
+                <form action="{{ route('comments.store', $review) }}" method="POST">
+                    @csrf
+
+                    <input type="hidden" name="parent_comment_id" value="{{ $review->id }}">
+                    <div class="form-group">
+                        <h4 class="fw-bold">1件のコメント</h4>
+                        <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
+                        <div class="mt-3 text-end">
+                            <button type="button" class="btn btn-outline-secondary me-3">キャンセル</button>
+                            <button type="submit" class="btn submit-button text-white">コメント</button>
+                        </div>
                     </div>
-                </div>
+                </form>
 
                 <div class="mt-5">
                     <div class="comment-body">
@@ -91,8 +96,8 @@
                         <div class="form-group mt-3">
                             <textarea name="content" class="form-control" rows="1" placeholder="返信を追加..."></textarea>
                             <div class="mt-3 text-end">
-                                <a class="btn btn-outline-secondary me-3" href="#" role="button">キャンセル</a>
-                                <a class="btn submit-button text-white" href="#" role="button">コメント</a>
+                                <button type="button" class="btn btn-outline-secondary me-3">キャンセル</button>
+                                <button type="submit" class="btn submit-button text-white">返信</button>
                             </div>
                         </div>
 
@@ -105,4 +110,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
