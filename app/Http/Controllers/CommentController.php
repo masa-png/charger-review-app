@@ -23,29 +23,29 @@ class CommentController extends Controller
     public function store(Review $review, Request $request)
     {
         $comment = new Comment();
+        $user_id = Auth::id();
+        $comment_count = $comment->all()->count();
 
         $comment->content = $request->input('content');
         $comment->review_id = $review->id;
-        $comment->user_id = Auth::id();
-        $comment->parent_comment_id = $request->input('parent_comment_id');
+        $comment->user_id = $user_id;
+        $comment->parent_comment_id = $comment_count + 1;
         $comment->save();
 
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Comment $comment)
+    public function store_reply(Review $review, Request $request)
     {
-        //
-    }
+        $comment = new Comment();
+        $user_id = Auth::id();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Comment $comment)
-    {
-        //
+        $comment->content = $request->input('content');
+        $comment->review_id = $review->id;
+        $comment->user_id = $user_id;
+        $comment->parent_comment_id = $request->input('parent_comment_id');
+        $comment->save();
+
+        return back();
     }
 }

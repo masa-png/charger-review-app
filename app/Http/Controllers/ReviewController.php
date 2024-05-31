@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Requests\ReviewRequest;
+use App\Models\Comment;
 
 class ReviewController extends Controller
 {
@@ -18,7 +19,10 @@ class ReviewController extends Controller
     {
         $review = Review::find($request->review);
 
-        return view('reviews.index', compact('review'));
+        $comments = Comment::where('review_id', $request->review)->get();
+        $comment_count = Comment::where('review_id', $request->review)->count();
+
+        return view('reviews.index', compact('review', 'comments', 'comment_count'));
     }
 
     // /**
@@ -46,7 +50,7 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public static function update(Review $review, ReviewRequest $request)
+    public function update(Review $review, ReviewRequest $request)
     {
         $product = Product::find($review->product_id);
         ProductController::update($request, $product);

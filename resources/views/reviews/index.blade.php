@@ -2,8 +2,8 @@
 @section('content')
     <div class="container pt-3">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-theme="dark">
+            <div class="col-md-5 mt-4 px-md-2">
+                <div id="carouselExampleIndicators" class="carousel slide w-75" data-bs-theme="dark">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1"></button>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-7 mt-4 pe-md-5">
                 <div class="mb-5">
                     <h3 class="fw-bold">{{ $review->title }}</h3>
                     <p class="fs-5 mb-2"><span class="review-score-color">{{ str_repeat('★', $review->score) }}</span><span
@@ -61,53 +61,36 @@
                             class="text-muted">{{ $review->created_at }}</span></p>
                 </div>
 
-                @guest
-                    <div class="mb-4">
-                        <p>ユーザー登録していただくとレビューに対してコメントができます。</p>
-                    </div>
-                @endguest
-
                 {{-- コメント欄 --}}
-                <form action="{{ route('comments.store', $review) }}" method="POST">
-                    @csrf
+                <div class="comment-area form-group w-75">
+                    @if ($comment_count > 0)
+                        <h5 class="fw-bold">{{ $comment_count }}件のコメント</h5>
+                    @else
+                        <h5 class="fw-bold">この記事にコメントはありません。</h5>
+                    @endif
 
-                    <input type="hidden" name="parent_comment_id" value="{{ $review->id }}">
-                    <div class="form-group">
-                        <h4 class="fw-bold">1件のコメント</h4>
-                        <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
-                        <div class="mt-3 text-end">
-                            <button type="button" class="btn btn-outline-secondary me-3">キャンセル</button>
-                            <button type="submit" class="btn submit-button text-white">コメント</button>
+                    @guest
+                        <div class="mb-4">
+                            <h5>ユーザー登録していただくとコメントができます。</h5>
                         </div>
-                    </div>
-                </form>
-
-                <div class="mt-5">
-                    <div class="comment-body">
-                        <div class="comment-content">
-                            <h5 class="mt-0">
-                                <a href="#">ユーザー名</a>
-                                <a href="#">
-                                    <i class="fa fa-reply"></i>
-                                </a>
-                            </h5>
-                            テストコメント
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea name="content" class="form-control" rows="1" placeholder="返信を追加..."></textarea>
+                    @else
+                        <form action="{{ route('comments.store', $review) }}" method="POST">
+                            @csrf
+                            <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
                             <div class="mt-3 text-end">
                                 <button type="button" class="btn btn-outline-secondary me-3">キャンセル</button>
-                                <button type="submit" class="btn submit-button text-white">返信</button>
+                                <button type="submit" class="btn submit-button text-white">コメント</button>
                             </div>
-                        </div>
-
-                        <div>
-                            <h5 class="mt-3">
-                                <a href="#">~件の返信</a>
-                            </h5>
-                        </div>
+                        </form>
                     </div>
-                </div>
+
+                    <div class="comment-container mt-5 w-75">
+                        @foreach ($comments as $comment)
+                            @component('components.comment', ['comment' => $comment, 'review' => $review])
+                            @endcomponent
+                        @endforeach
+                    </div>
+                @endguest
             </div>
         </div>
     </div>

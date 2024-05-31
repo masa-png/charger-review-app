@@ -48,5 +48,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::controller(CommentController::class)->group(function () {
         Route::post('comments/store/{review}', 'store')->name('comments.store');
+        Route::post('comments/reply/{review}', 'store_reply')->name('comments.store_reply');
     });
 });
