@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Requests\ReviewRequest;
-use App\Models\Comment;
 
 class ReviewController extends Controller
 {
@@ -19,10 +18,7 @@ class ReviewController extends Controller
     {
         $review = Review::find($request->review);
 
-        $comments = Comment::where('review_id', $request->review)->get();
-        $comment_count = Comment::where('review_id', $request->review)->count();
-
-        return view('reviews.index', compact('review', 'comments', 'comment_count'));
+        return view('reviews.index', compact('review'));
     }
 
     // /**
@@ -53,6 +49,8 @@ class ReviewController extends Controller
     public function update(Review $review, ReviewRequest $request)
     {
         $product = Product::find($review->product_id);
+
+        // ProductControllerのstore()を実行
         ProductController::update($request, $product);
 
         $review->title = $request->input('title');

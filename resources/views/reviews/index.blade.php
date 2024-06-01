@@ -63,17 +63,13 @@
 
                 {{-- コメント欄 --}}
                 <div class="comment-area form-group w-75">
-                    @if ($comment_count > 0)
-                        <h5 class="fw-bold">{{ $comment_count }}件のコメント</h5>
-                    @else
-                        <h5 class="fw-bold">この記事にコメントはありません。</h5>
-                    @endif
-
                     @guest
                         <div class="mb-4">
                             <h5>ユーザー登録していただくとコメントができます。</h5>
                         </div>
                     @else
+                        <h5 class="fw-bold">{{ $review->comments->count() }}件のコメント</h5>
+
                         <form action="{{ route('comments.store', $review) }}" method="POST">
                             @csrf
                             <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
@@ -85,7 +81,7 @@
                     </div>
 
                     <div class="comment-container mt-5 w-75">
-                        @foreach ($comments as $comment)
+                        @foreach ($review->comments as $comment)
                             @component('components.comment', ['comment' => $comment, 'review' => $review])
                             @endcomponent
                         @endforeach
