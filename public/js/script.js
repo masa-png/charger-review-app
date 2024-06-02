@@ -15,3 +15,11 @@ $(document).ready(function() {
         ]
     });
 });
+
+// アコーディオンメニュー
+$(function () {
+    $(".js-accordion-title").on("click", function () {
+        $(this).next().slideToggle(100);
+        $(this).toggleClass("open", 100);
+    });
+});

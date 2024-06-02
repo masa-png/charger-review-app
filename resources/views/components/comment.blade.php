@@ -18,13 +18,19 @@
         </div>
     </form>
 
-    <div class="reply-container ps-4">
-        <h5 class="mt-3">
-            <a href="#">{{ $comment->children->count() }}件の返信</a>
-        </h5>
-        @foreach ($comment->children as $reply)
-            @component('components.comment', ['comment' => $reply, 'review' => $review])
-            @endcomponent
-        @endforeach
+    <div class="reply-accordion-container">
+        <div class="reply-accordion-item">
+            @if ($comment->children->count() > 0)
+                <h5 class="accordion-title js-accordion-title mt-3 ps-3">
+                    {{ $comment->children->count() }}件の返信
+                </h5>
+            @endif
+            <div class="accordion-content ms-3">
+                @foreach ($comment->children as $reply)
+                    @component('components.comment', ['comment' => $reply, 'review' => $review])
+                    @endcomponent
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>

@@ -252,3 +252,36 @@ header > nav {
 .review-score-blank-color {
     color: #cccccc;
 }
+
+/* アコーディオンメニュー */
+.accordion-title {
+    color: #00BCC5;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+}
+
+.accordion-title::before {
+    border-right: solid 2px #00BCC5;
+    border-top: solid 2px #00BCC5;
+    content: "";
+    display: block;
+    height: 8px;
+    position: absolute;
+    left: 0px;
+    top: 28%;
+    transform: rotate(135deg);
+    transition: transform .1s ease-in-out, top .1s ease-in-out;
+    width: 8px;
+}
+
+.accordion-title.open::before {
+    top: 45%;
+    transform: rotate(-45deg);
+}
+
+.accordion-content {
+    display: none;
+}
+
+
