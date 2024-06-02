@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container pt-3">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-5 mt-4 px-md-2">
-                <div id="carouselExampleIndicators" class="carousel slide w-75" data-bs-theme="dark">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-5 mt-4">
+                <div id="carouselExampleIndicators" class="carousel slide">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1"></button>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7 mt-4 pe-md-5">
+            <div class="col-md-6 mt-4 ms-md-5">
                 <div class="mb-5">
                     <h3 class="fw-bold">{{ $review->title }}</h3>
                     <p class="fs-5 mb-2"><span class="review-score-color">{{ str_repeat('★', $review->score) }}</span><span
@@ -62,7 +62,7 @@
                 </div>
 
                 {{-- コメント欄 --}}
-                <div class="comment-area form-group w-75">
+                <div class="comment-area form-group">
                     @guest
                         <div class="mb-4">
                             <h5>ユーザー登録していただくとコメントができます。</h5>
@@ -72,15 +72,14 @@
 
                         <form action="{{ route('comments.store', $review) }}" method="POST">
                             @csrf
-                            <textarea name="content" class="form-control" rows="1" placeholder="コメントする..."></textarea>
-                            <div class="mt-3 text-end">
-                                <button type="button" class="btn btn-outline-secondary me-3">キャンセル</button>
-                                <button type="submit" class="btn submit-button text-white">コメント</button>
+                            <textarea name="content" class="form-control input-comment" rows="1" placeholder="コメントする..."></textarea>
+                            <div class="mt-3 text-end btn-area">
+                                <button type="submit" class="btn comment-button text-white" disabled>コメント</button>
                             </div>
                         </form>
                     </div>
 
-                    <div class="comment-container mt-5 w-75">
+                    <div class="comment-container mt-5">
                         @foreach ($review->comments as $comment)
                             @component('components.comment', ['comment' => $comment, 'review' => $review])
                             @endcomponent

@@ -17,9 +17,33 @@ $(document).ready(function() {
 });
 
 // アコーディオンメニュー
-$(function () {
-    $(".js-accordion-title").on("click", function () {
+$(function() {
+    $(".js-accordion-title").on("click", function() {
         $(this).next().slideToggle(100);
         $(this).toggleClass("open", 100);
     });
 });
+
+$(".input-comment").on("keyup", function() {
+    let text = $(".input-comment").val();
+
+    if (text) {
+        $(".comment-button").prop("disabled", false);
+    }
+    else {
+        $(".comment-button").prop("disabled", true);
+    }
+});
+
+$(".input-reply").on("keyup", function() {
+    let text = $(".input-reply").val();
+
+    if (text) {
+        $(".reply-button").prop("disabled", false);
+    }
+    else {
+        $(".reply-button").prop("disabled", true);
+    }
+});
+
+

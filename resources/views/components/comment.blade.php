@@ -1,19 +1,16 @@
 <div class="comment-body my-4">
     <h5 class="comment-body-user mt-0">{{ $comment->user->name }}</h5>
     <p class="comment-body-content">{{ $comment->content }}</p>
-    <a href="#">
-        <i class="fa fa-reply">返信</i>
-    </a>
+    <a class="accordion-title js-accordion-title ps-3">返信</a>
 
-    <form action="{{ route('comments.store_reply', $review) }}" method="POST">
+    <form action="{{ route('comments.store_reply', $review) }}" method="POST" class="reply-area">
         @csrf
 
         <input type="hidden" name="parent_comment_id" value="{{ $comment->id }}">
-        <div class="reply-area form-group mt-3">
-            <textarea name="content" class="form-control" rows="1" placeholder="返信を追加..."></textarea>
+        <div class="form-group mt-3">
+            <textarea name="content" class="form-control input-reply" rows="1" placeholder="返信を追加..."></textarea>
             <div class="mt-3 text-end">
-                <button type="button" class="btn btn-outline-secondary me-3">キャンセル</button>
-                <button type="submit" class="btn submit-button text-white">返信</button>
+                <button type="submit" class="btn reply-button text-white" disabled>返信</button>
             </div>
         </div>
     </form>
