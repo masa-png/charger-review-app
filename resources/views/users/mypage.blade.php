@@ -66,7 +66,7 @@
                                     </div>
                                     <div>
                                         <a href="{{ route('mypage.edit_review', ['review' => $review->product_id]) }}">
-                                            <i class="fa fa-reply"></i>
+                                            <i class="fa-solid fa-pen"></i>
                                         </a>
                                     </div>
                                     <hr>
