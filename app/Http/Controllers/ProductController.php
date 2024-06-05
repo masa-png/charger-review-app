@@ -19,22 +19,18 @@ class ProductController extends Controller
 
         if ($request->vendor !== null) {
             $products = Product::where('vendor_id', $request->vendor)->paginate(6);
-            $total_count = Product::where('vendor_id', $request->vendor)->count();
             $vendor = Vendor::find($request->vendor);
             $wattage = null;
         } elseif ($request->wattage !== null) {
             $products = Product::where('wattage_id', $request->wattage)->paginate(6);
-            $total_count = Product::where('wattage_id', $request->wattage)->count();
             $wattage = Wattage::find($request->wattage);
             $vendor = null;
         } elseif ($keyword !== null) {
             $products = Product::where('name', 'like', "%{$keyword}%")->paginate(6);
-            $total_count = $products->total();
             $vendor = null;
             $wattage = null;
         } else {
             $products = Product::paginate(6);
-            $total_count = "";
             $vendor = null;
             $wattage = null;
         }
@@ -42,7 +38,7 @@ class ProductController extends Controller
         $vendors = Vendor::all();
         $wattages = Wattage::all();
 
-        return view('products.index', compact('products', 'vendor', 'vendors', 'wattage', 'wattages', 'total_count', 'keyword'));
+        return view('products.index', compact('products', 'vendor', 'vendors', 'wattage', 'wattages', 'keyword'));
     }
 
     // /**
