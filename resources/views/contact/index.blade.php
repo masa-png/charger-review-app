@@ -7,26 +7,21 @@
 
                 <hr class="mb-4">
 
-                <form action="" method="POST">
+                <form action="{{ route('contact.store') }}" method="POST">
                     @csrf
 
                     <div class="form-group mb-3">
                         <input name="name" type="text" class="form-control form-input" value="{{ old('name') }}"
-                            autofocus placeholder="お名前">
+                            autofocus placeholder="お名前(任意)">
                     </div>
 
                     <div class="form-group mb-3">
                         <input name="email" type="email" class="form-control form-input" value="{{ old('email') }}"
-                            placeholder="メールアドレス">
+                            placeholder="メールアドレス(任意)">
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="title" type="text" class="form-control form-input" value="{{ old('title') }}"
-                            placeholder="お問い合わせ件名">
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <textarea name="content" class="form-control form-input" value="{{ old('content') }}" placeholder="お問い合わせ内容"></textarea>
+                        <textarea name="content" class="form-control form-input" value="{{ old('content') }}" required placeholder="お問い合わせ内容"></textarea>
                     </div>
 
                     <hr class="mb-4">
