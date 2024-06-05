@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ $vendor->name }}</li>
                         </ol>
                     </nav>
-                    <h2 class="mb-4">{{ $vendor->name }}の投稿一覧{{ $total_count }}件</h2>
+                    <h2 class="mb-4">{{ $vendor->name }}の投稿一覧{{ $products->count() }}件</h2>
                 @elseif ($wattage !== null)
                     <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -22,7 +22,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ $wattage->watt }}</li>
                         </ol>
                     </nav>
-                    <h2 class="mb-4">{{ $wattage->watt }}Wの投稿一覧{{ $total_count }}件</h2>
+                    <h2 class="mb-4">{{ $wattage->watt }}Wの投稿一覧{{ $products->count() }}件</h2>
                 @elseif ($keyword !== null)
                     <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -30,7 +30,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ $keyword }}</li>
                         </ol>
                     </nav>
-                    <h2 class="mb-4">{{ $keyword }}の検索結果{{ $total_count }}件</h2>
+                    <h2 class="mb-4">{{ $keyword }}の検索結果{{ $products->count() }}件</h2>
                 @else
                     <h2 class="pt-5 mb-4">投稿一覧</h2>
                 @endif
