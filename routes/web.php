@@ -29,6 +29,7 @@ Route::get('reviews', [ReviewController::class, 'index'])->name('reviews.index')
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
+Route::get('contact/thanks', [ContactController::class, 'index_thanks'])->name('contact.thanks');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(UserController::class)->group(function () {
