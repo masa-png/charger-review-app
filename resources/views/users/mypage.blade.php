@@ -17,7 +17,7 @@
                             <img src="" class="card-img-top" alt="プロフィール画像">
                         </div>
                         <div class="card-body">
-                            <label for="review-img" class="mb-3">画像をアップロード</label>
+                            <label for="review-img" class="mb-3">プロフィール画像を編集</label>
                             <input id="review-img" name="file" type="file" class="form-control form-input"></input>
                         </div>
 
@@ -57,11 +57,10 @@
                                 @foreach ($reviews as $review)
                                     <div class="mt-4">
                                         <small class="text-body-secondary">{{ $review->updated_at }}</small><br>
-                                        <h4 class="card-subtitle my-2 text-body-secondary">{{ $review->product->name }}
+                                        <h4 class="card-subtitle my-2 text-body-secondary">{{ $review->title }}
                                         </h4>
                                         <p>
-                                            <a
-                                                href="{{ route('reviews.index', ['review' => $review->product->id]) }}">{{ $review->title }}</a>
+                                            <a href="{{ route('reviews.index', ['review' => $review->product_id]) }}">詳細</a>
                                         </p>
                                     </div>
                                     <div>

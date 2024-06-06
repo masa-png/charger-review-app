@@ -100,7 +100,15 @@
                             <div class="card-body">
                                 <label for="product-img" class="mb-3">画像をアップロード</label>
                                 <input id="product-img" name="image" type="file" multiple
-                                    class="form-control review-input"></input>
+                                    class="form-control @error('image') is-invalid @enderror review-input">
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>

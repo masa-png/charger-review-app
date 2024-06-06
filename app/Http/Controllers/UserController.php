@@ -36,14 +36,13 @@ class UserController extends Controller
     public function edit_review(Request $request)
     {
         $review = Review::find($request->review);
-        $product = Product::find($request->review);
 
         $vendors = Vendor::all();
         $wattages = Wattage::all();
         $types = Type::all();
         $user = Auth::user();
 
-        return view('users.edit_review', compact('review', 'product', 'vendors', 'wattages', 'types', 'user'));
+        return view('users.edit_review', compact('review', 'vendors', 'wattages', 'types', 'user'));
     }
 
     public function edit(User $user)

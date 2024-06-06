@@ -46,7 +46,8 @@
                         <div class="col">
                             <div class="card h-100">
                                 <a href="{{ route('reviews.index', ['review' => $product->id]) }}">
-                                    <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail card-img-top">
+                                    <img src="{{ $product->image_path ? $product->image_path : asset('img/IMG_0835.jpeg') }}"
+                                        class="img-thumbnail card-img-top">
                                 </a>
                                 <div class="card-body">
                                     <h4 class="card-title">メーカー名 {{ $product->vendor->name }}</h4>
