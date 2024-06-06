@@ -113,7 +113,6 @@
                             <div class="card-body">
                                 <label for="review-img" class="mb-3">画像をアップロード</label>
                                 <input id="review-img" name="image" type="file" multiple
-                                    value="{{ $review->product->image_path, old('image') }}"
                                     class="form-control @error('image') is-invalid @enderror review-input">
 
                                 @error('image')
@@ -129,6 +128,7 @@
 
                     <input type="hidden" name="product_id" value="{{ $review->product_id }}">
                     <input type="hidden" name="user_id" value="{{ $review->user_id }}">
+                    <input type="hidden" name="old_image_path" value="{{ $review->product->image_path }}">
 
                     <div class="form-group">
                         <button type="submit" class="btn submit-button w-100 text-white">
