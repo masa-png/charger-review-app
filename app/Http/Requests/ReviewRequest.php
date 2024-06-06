@@ -27,6 +27,7 @@ class ReviewRequest extends FormRequest
             'type_id' => 'required',
             'wattage_id' => 'required',
             'price' => 'required|integer',
+            'image' => 'file|image|multiple_of:3|mimes:png,jpg,jpeg',
             'score' => 'required|numeric',
             'title' => 'required|string|max:50',
             'content' => 'required|string|max:200'
