@@ -14,7 +14,7 @@
 
                 <hr class="mb-4">
 
-                <form action="{{ route('reviews.update', $review) }}" method="POST">
+                <form action="{{ route('reviews.update', $review) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -108,15 +108,16 @@
                         @enderror
                     </div>
 
-                    {{-- <div class="row my-3">
+                    <div class="row my-3">
                         <div class="card w-75 m-auto">
                             <div class="card-body">
                                 <label for="review-img" class="mb-3">画像をアップロード</label>
-                                <input id="review-img" name="file" type="file"
+                                <input id="review-img" name="file" type="file" multiple
                                     class="form-control review-input"></input>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+
                     <input type="hidden" name="product_id" value="{{ $review->product_id }}">
                     <input type="hidden" name="user_id" value="{{ $review->user_id }}">
 
