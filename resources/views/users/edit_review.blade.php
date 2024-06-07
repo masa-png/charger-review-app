@@ -111,7 +111,7 @@
                     <div class="row my-3">
                         <div class="card w-75 m-auto">
                             <div class="card-body">
-                                <label for="review-img" class="mb-3">画像をアップロード</label>
+                                <label for="review-img" class="mb-3">画像を選択</label>
                                 <input id="review-img" name="image" type="file" multiple
                                     class="form-control @error('image') is-invalid @enderror review-input">
 
