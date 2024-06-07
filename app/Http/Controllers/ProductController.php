@@ -66,15 +66,18 @@ class ProductController extends Controller
      */
     public static function update(Request $request, Product $product)
     {
-        // s3に保存
-        $path = Storage::disk('s3')->putFile('', $request->file('image'));
+        if ($request->file('image') !== null) {
+            // s3に保存
+            $path = Storage::disk('s3')->putFile('', $request->file('image'));
+            $product->image_path = Storage::disk('s3')->url($path);
+        }
 
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->vendor_id = $request->input('vendor_id');
         $product->wattage_id = $request->input('wattage_id');
         $product->type_id = $request->input('type_id');
-        $product->image_path = Storage::disk('s3')->url($path);
+
         $product->update();
     }
 }
