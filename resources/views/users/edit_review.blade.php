@@ -14,14 +14,14 @@
 
                 <hr class="mb-4">
 
-                <form action="{{ route('reviews.update', $review) }}" method="POST">
+                <form action="{{ route('reviews.update', $review) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group mb-3">
                         <select name="vendor_id" class="form-select review-input" aria-label="メーカー名">
                             @foreach ($vendors as $vendor)
-                                @if ($vendor->id == $product->vendor_id)
+                                @if ($vendor->id == $review->product->vendor_id)
                                     <option value="{{ $vendor->id }}" selected>{{ $vendor->name }}</option>
                                 @else
                                     <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
@@ -33,7 +33,7 @@
                     <div class="form-group mb-3">
                         <input name="name" type="text"
                             class="form-control @error('name') is-invalid @enderror review-input"
-                            value="{{ $product->name, old('name') }}" required autofocus placeholder="商品名">
+                            value="{{ $review->product->name, old('name') }}" required autofocus placeholder="商品名">
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                     <div class="form-group mb-3">
                         <select name="type_id" class="form-select review-input" aria-label="種類">
                             @foreach ($types as $type)
-                                @if ($type->id == $product->type_id)
+                                @if ($type->id == $review->product->type_id)
                                     <option value="{{ $type->id }}" selected>{{ $type->name }}タイプ</option>
                                 @else
                                     <option value="{{ $type->id }}">{{ $type->name }}タイプ</option>
@@ -57,7 +57,7 @@
                     <div class="form-group mb-3">
                         <select name="wattage_id" class="form-select review-input" aria-label="W数">
                             @foreach ($wattages as $wattage)
-                                @if ($wattage->id == $product->wattage_id)
+                                @if ($wattage->id == $review->product->wattage_id)
                                     <option value="{{ $wattage->id }}" selected>{{ $wattage->watt }}W</option>
                                 @else
                                     <option value="{{ $wattage->id }}">{{ $wattage->watt }}W</option>
@@ -68,7 +68,7 @@
 
                     <div class="form-group mb-3">
                         <input name="price" type="number" class="form-control review-input"
-                            value="{{ $product->price, old('price') }}" required placeholder="値段">
+                            value="{{ $review->product->price, old('price') }}" required placeholder="値段">
                     </div>
 
                     {{-- <div class="form-group mb-3">
@@ -108,17 +108,27 @@
                         @enderror
                     </div>
 
-                    {{-- <div class="row my-3">
+                    <div class="row my-3">
                         <div class="card w-75 m-auto">
                             <div class="card-body">
-                                <label for="review-img" class="mb-3">画像をアップロード</label>
-                                <input id="review-img" name="file" type="file"
-                                    class="form-control review-input"></input>
+                                <label for="review-img" class="mb-3">画像を選択</label>
+                                <input id="review-img" name="image" type="file" multiple
+                                    class="form-control @error('image') is-invalid @enderror review-input">
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+
                     <input type="hidden" name="product_id" value="{{ $review->product_id }}">
                     <input type="hidden" name="user_id" value="{{ $review->user_id }}">
+                    <input type="hidden" name="old_image_path" value="{{ $review->product->image_path }}">
 
                     <div class="form-group">
                         <button type="submit" class="btn submit-button w-100 text-white">

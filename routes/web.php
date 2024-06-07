@@ -34,6 +34,7 @@ Route::get('contact/thanks', [ContactController::class, 'index_thanks'])->name('
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('users/mypage', 'mypage')->name('mypage');
+        Route::patch('users/mypage/image', 'update_image')->name('mypage.update_image');
         Route::get('users/mypage/create/review', 'create_review')->name('mypage.create_review');
         Route::get('users/mypage/edit/review', 'edit_review')->name('mypage.edit_review');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');

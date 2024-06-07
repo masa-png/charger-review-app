@@ -14,8 +14,9 @@
 
                 <hr class="mb-4">
 
-                <form action="{{ route('reviews.store') }}" method="POST">
+                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+
                     <div class="form-group mb-3">
                         <select name="vendor_id" class="form-select review-input" aria-label="メーカー名">
                             @foreach ($vendors as $vendor)
@@ -94,15 +95,23 @@
                         @enderror
                     </div>
 
-                    {{-- <div class="row my-3">
+                    <div class="row my-3">
                         <div class="card w-75 m-auto">
                             <div class="card-body">
-                                <label for="review-img" class="mb-3">画像をアップロード</label>
-                                <input id="review-img" name="file" type="file"
-                                    class="form-control review-input"></input>
+                                <label for="product-img" class="mb-3">画像を選択</label>
+                                <input id="product-img" name="image" type="file" multiple
+                                    class="form-control @error('image') is-invalid @enderror review-input" required>
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn submit-button w-100 text-white">

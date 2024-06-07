@@ -7,6 +7,7 @@ use App\Models\Vendor;
 use App\Models\Wattage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -48,11 +49,15 @@ class ProductController extends Controller
     {
         $product = new Product();
 
+        // s3に保存
+        $path = Storage::disk('s3')->putFile('', $request->file('image'));
+
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->vendor_id = $request->input('vendor_id');
         $product->wattage_id = $request->input('wattage_id');
         $product->type_id = $request->input('type_id');
+        $product->image_path = Storage::disk('s3')->url($path);
         $product->save();
     }
 
@@ -61,11 +66,18 @@ class ProductController extends Controller
      */
     public static function update(Request $request, Product $product)
     {
+        if ($request->file('image') !== null) {
+            // s3に保存
+            $path = Storage::disk('s3')->putFile('', $request->file('image'));
+            $product->image_path = Storage::disk('s3')->url($path);
+        }
+
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->vendor_id = $request->input('vendor_id');
         $product->wattage_id = $request->input('wattage_id');
         $product->type_id = $request->input('type_id');
+
         $product->update();
     }
 }

@@ -14,13 +14,8 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail d-block">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail d-block">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ asset('img/IMG_0835.jpeg') }}" class="img-thumbnail d-block">
+                            <img src="{{ $review->product->image_path ? $review->product->image_path : asset('img/IMG_0835.jpeg') }}"
+                                class="img-thumbnail card-img-top">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

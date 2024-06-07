@@ -83,6 +83,11 @@ footer {
     background-color: #EDF6FB;
 }
 
+.img-box,
+.img-box > img {
+    height: 200px;
+}
+
 /* カルーセルスライダー */
 .multiple-items {
     height: 200px;
