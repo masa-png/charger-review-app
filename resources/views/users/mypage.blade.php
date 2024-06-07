@@ -13,13 +13,31 @@
 
                 <div class="container mt-3">
                     <div class="card text-center m-auto py-3 px-3" style="width: 26rem;">
-                        <div>
-                            <img src="" class="card-img-top" alt="プロフィール画像">
+                        <div class="img-box">
+                            <img src="{{ $user->image_path ? $user->image_path : asset('img/IMG_0835.jpeg') }}"
+                                class="card-img-top rounded-circle w-50" alt="プロフィール画像">
                         </div>
-                        <div class="card-body">
-                            <label for="review-img" class="mb-3">プロフィール画像を編集</label>
-                            <input id="review-img" name="file" type="file" class="form-control form-input"></input>
-                        </div>
+                        <form action="{{ route('mypage.update_image') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PATCH')
+
+                            <div class="card-body">
+                                <label for="profile-img" class="mb-3">プロフィール画像を設定</label>
+                                <input id="profile-img" name="profile_image" type="file" required
+                                    class="form-control @error('profile_image') is-invalid @enderror form-input">
+
+                                @error('profile_image')
+                                    <span class="invalid-feedback" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </span>
+                                @enderror
+                                <div class="form-group">
+                                    <button type="submit" class="btn submit-button text-white mt-3">設定</button>
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="card-body">
                             <h6 class="card-subtitle mb-5 text-body-secondary">{{ $user->name }}</h6>
@@ -41,8 +59,8 @@
                 </div>
 
                 <div class="container mt-4">
-                    <div class="card mb-3">
-                        <div class="card-header text-center">
+                    <div class="card text-center mb-3">
+                        <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="true" href="">投稿した記事</a>
@@ -52,15 +70,17 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="card-body">
-                            @if ($reviews !== null)
+
+                        @if ($reviews !== null)
+                            <div class="card-body">
                                 @foreach ($reviews as $review)
                                     <div class="mt-4">
                                         <small class="text-body-secondary">{{ $review->updated_at }}</small><br>
                                         <h4 class="card-subtitle my-2 text-body-secondary">{{ $review->title }}
                                         </h4>
                                         <p>
-                                            <a href="{{ route('reviews.index', ['review' => $review->product_id]) }}">詳細</a>
+                                            <a
+                                                href="{{ route('reviews.index', ['review' => $review->product_id]) }}">詳細</a>
                                         </p>
                                     </div>
                                     <div>
@@ -70,10 +90,12 @@
                                     </div>
                                     <hr>
                                 @endforeach
-                            @else
-                                <p>投稿したレビュー記事はありません。</p>
-                            @endif
-                        </div>
+                            </div>
+                        @else
+                            <div class="card-body">
+                                <p class="card-text">投稿したレビュー記事はありません。</p>
+                            </div>
+                        @endif
                     </div>
                     {{ $reviews->appends(request()->query())->links() }}
                 </div>

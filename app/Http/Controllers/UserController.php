@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Review;
 use App\Models\Type;
 use App\Models\User;
@@ -11,6 +10,7 @@ use App\Models\Wattage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -43,6 +43,27 @@ class UserController extends Controller
         $user = Auth::user();
 
         return view('users.edit_review', compact('review', 'vendors', 'wattages', 'types', 'user'));
+    }
+
+    public function update_image(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($request->file('profile_image') !== null) {
+
+            $request->validate([
+                'profile_image' => 'file|image|mimes:png,jpg,jpeg',
+            ]);
+            // s3に保存
+            $path = Storage::disk('s3')->putFile('profiles', $request->file('profile_image'));
+
+            $user->image_path = Storage::disk('s3')->url($path);
+            $user->save();
+
+            return back()->with('flash_message', 'プロフィール画像を設定しました。');
+        } else {
+            return back();
+        }
     }
 
     public function edit(User $user)
