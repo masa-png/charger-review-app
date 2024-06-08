@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <img src="{{ asset('img/USB-PD.png') }}" class="img-fluid">
+        <img src="{{ asset('img/') }}" class="img-fluid">
     </div>
 
     {{-- USB PDとは？ --}}
@@ -18,7 +18,7 @@
         <div class="container mt-5">
             <div class="row mb-5">
                 <div class="col-md-6">
-                    <img src="{{ asset('img/USB-PD.png') }}" class="img-fluid">
+                    <img src="{{ asset('img/') }}" class="img-fluid">
                 </div>
                 <div class="col-md-6">
                     <h1 style="color: #C60E31;" class="fw-bold mb-3">01</h1>
@@ -41,13 +41,13 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('img/USB-PD.png') }}" class="img-fluid">
+                    <img src="{{ asset('img/') }}" class="img-fluid">
                 </div>
             </div>
 
             <div class="row mb-5">
                 <div class="col-md-6">
-                    <img src="{{ asset('img/w数.png') }}" class="img-fluid">
+                    <img src="{{ asset('img/') }}" class="img-fluid">
                 </div>
                 <div class="col-md-6">
                     <h1 style="color: #C60E31" class="fw-bold mb-3">03</h1>
@@ -74,31 +74,31 @@
         <div class="container mt-5">
             <div class="multiple-items text-center">
                 <div>
-                    <a href=""><img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}"></a>
+                    <a href=""><img class="img-thumbnail" src="{{ asset('img/') }}" alt="壁挿しタイプ"></a>
                     <a href="">
                         <p>壁挿しタイプ</p>
                     </a>
                 </div>
                 <div>
-                    <a href=""><img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}"></a>
+                    <a href=""><img class="img-thumbnail" src="{{ asset('img/') }}" alt="卓上タイプ"></a>
                     <a href="">
                         <p>卓上タイプ</p>
                     </a>
                 </div>
                 <div>
-                    <a href=""><img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}"></a>
+                    <a href=""><img class="img-thumbnail" src="{{ asset('img/') }}" alt="ワイヤレスタイプ"></a>
                     <a href="">
                         <p>ワイヤレスタイプ</p>
                     </a>
                 </div>
                 <div>
-                    <a href=""><img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}"></a>
+                    <a href=""><img class="img-thumbnail" src="{{ asset('img/') }}" alt="マグネットタイプ"></a>
                     <a href="">
                         <p>マグネットタイプ</p>
                     </a>
                 </div>
                 <div>
-                    <a href=""><img class="img-thumbnail" src="{{ asset('img/USB-PD.png') }}"></a>
+                    <a href=""><img class="img-thumbnail" src="{{ asset('img/') }}" alt="ステーションタイプ"></a>
                     <a href="">
                         <p>ステーションタイプ</p>
                     </a>
