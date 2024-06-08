@@ -59,20 +59,20 @@
                 </div>
 
                 <div class="container mt-4">
-                    <div class="card text-center mb-3">
-                        <div class="card-header">
+                    <div class="card mb-3">
+                        <div class="card-header text-center">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="true" href="">投稿した記事</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">いいねした記事</a>
+                                    {{-- <a class="nav-link" href="#">いいねした記事</a> --}}
                                 </li>
                             </ul>
                         </div>
 
-                        @if ($reviews !== null)
-                            <div class="card-body">
+                        <div class="card-body">
+                            @if ($reviews !== null)
                                 @foreach ($reviews as $review)
                                     <div class="mt-4">
                                         <small class="text-body-secondary">{{ $review->updated_at }}</small><br>
@@ -90,12 +90,10 @@
                                     </div>
                                     <hr>
                                 @endforeach
-                            </div>
-                        @else
-                            <div class="card-body">
+                            @else
                                 <p class="card-text">投稿したレビュー記事はありません。</p>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </div>
                     {{ $reviews->appends(request()->query())->links() }}
                 </div>
