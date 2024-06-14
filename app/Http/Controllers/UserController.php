@@ -116,6 +116,6 @@ class UserController extends Controller
     public function destroy(Request $request)
     {
         Auth::user()->delete();
-        return redirect('/reviews')->with('flash_message', '退会が完了しました。');
+        return redirect('/products')->with('flash_message', '退会が完了しました。');
     }
 }
