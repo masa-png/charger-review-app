@@ -1,33 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-4">
+    <div class="container my-5">
         <div class="row">
             <div class="col-md-5 mt-4">
-                <div id="carouselExampleIndicators" class="carousel slide">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ $review->product->image_path ? $review->product->image_path : asset('img/IMG_0835.jpeg') }}"
-                                class="img-thumbnail card-img-top">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                <div>
+                    <img src="{{ $review->product->image_path ? $review->product->image_path : asset('img/IMG_0835.jpeg') }}"
+                        class="img-thumbnail card-img-top">
                 </div>
 
                 <div class="card mt-5" style="width: 26rem;">
@@ -60,7 +38,7 @@
                 <div class="comment-area form-group">
                     @guest
                         <div class="mb-4">
-                            <h5>ユーザー登録していただくとコメントができます。</h5>
+                            <h5>ユーザー登録していただくとレビューに対してコメントができます。</h5>
                         </div>
                     @else
                         <h5 class="fw-bold">{{ $review->comments->count() }}件のコメント</h5>
