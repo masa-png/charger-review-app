@@ -258,6 +258,25 @@ footer {
     transition: 0.1s;
 }
 
+.nav-link {
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #00BCC5;
+}
+
+.nav-link:focus {
+    opacity: 0.8;
+    color: #00BCC5;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+    color: #00BCC5;
+}
+
 .submit-button:hover,
 .reply-button:hover {
     opacity: 0.8;
@@ -308,5 +327,3 @@ footer {
 .accordion-content {
     display: none;
 }
-
-
