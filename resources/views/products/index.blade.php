@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container pt-2">
+    <div class="container my-5">
         <div class="row">
             <div class="col-md-2">
                 @component('components.sidebar', ['vendors' => $vendors, 'wattages' => $wattages])
