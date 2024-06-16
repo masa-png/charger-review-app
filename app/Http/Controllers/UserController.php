@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Review;
 use App\Models\Type;
 use App\Models\User;
@@ -25,24 +26,26 @@ class UserController extends Controller
 
     public function create_review()
     {
+        $products = Product::all();
         $vendors = Vendor::all();
         $wattages = Wattage::all();
         $types = Type::all();
         $user = Auth::user();
 
-        return view('users.create_review', compact('user', 'vendors', 'wattages', 'types'));
+        return view('users.create_review', compact('products', 'user', 'vendors', 'wattages', 'types'));
     }
 
     public function edit_review(Request $request)
     {
         $review = Review::find($request->review);
 
+        $products = Product::all();
         $vendors = Vendor::all();
         $wattages = Wattage::all();
         $types = Type::all();
         $user = Auth::user();
 
-        return view('users.edit_review', compact('review', 'vendors', 'wattages', 'types', 'user'));
+        return view('users.edit_review', compact('review', 'products', 'vendors', 'wattages', 'types', 'user'));
     }
 
     public function update_image(Request $request)

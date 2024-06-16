@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container py-4">
+    <div class="container my-4">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -26,9 +26,15 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="name" type="text"
+                        <input list="product_list" name="name"
                             class="form-control @error('name') is-invalid @enderror review-input"
-                            value="{{ old('name') }}" required autofocus placeholder="商品名">
+                            value="{{ old('name') }}" placeholder="商品名" required>
+
+                        <datalist id="product_list">
+                            @foreach ($products as $product)
+                                <option value="{{ $product->name }}">{{ $product->name }}</option>
+                            @endforeach
+                        </datalist>
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -86,7 +92,7 @@
 
                     <div class="form-group mb-3">
                         <textarea name="content" class="form-control @error('content') is-invalid @enderror review-input" required
-                            placeholder="レビュー内容">{{ old('content') }}</textarea>
+                            rows="6" placeholder="レビュー内容">{{ old('content') }}</textarea>
 
                         @error('content')
                             <span class="invalid-feedback" role="alert">
@@ -95,21 +101,19 @@
                         @enderror
                     </div>
 
-                    <div class="row my-3">
-                        <div class="card w-75 m-auto">
-                            <div class="card-body">
-                                <label for="product-img" class="mb-3">画像を選択</label>
-                                <input id="product-img" name="image" type="file" multiple
-                                    class="form-control @error('image') is-invalid @enderror review-input" required>
+                    <div class="card w-75 m-auto my-3">
+                        <div class="card-body">
+                            <label for="product-img" class="mb-3">画像を選択</label>
+                            <input id="product-img" name="image" type="file"
+                                class="form-control @error('image') is-invalid @enderror review-input" required>
 
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </span>
+                            @enderror
                         </div>
                     </div>
 

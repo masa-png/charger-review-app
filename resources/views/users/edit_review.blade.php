@@ -31,9 +31,15 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input name="name" type="text"
+                        <input list="product_list" name="name"
                             class="form-control @error('name') is-invalid @enderror review-input"
-                            value="{{ $review->product->name, old('name') }}" required autofocus placeholder="商品名">
+                            value="{{ $review->product->name, old('name') }}" placeholder="商品名" required>
+
+                        <datalist id="product_list">
+                            @foreach ($products as $product)
+                                <option value="{{ $product->name }}">{{ $product->name }}</option>
+                            @endforeach
+                        </datalist>
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -112,7 +118,7 @@
                         <div class="card w-75 m-auto">
                             <div class="card-body">
                                 <label for="review-img" class="mb-3">画像を選択</label>
-                                <input id="review-img" name="image" type="file" multiple
+                                <input id="review-img" name="image" type="file"
                                     class="form-control @error('image') is-invalid @enderror review-input">
 
                                 @error('image')
@@ -128,7 +134,6 @@
 
                     <input type="hidden" name="product_id" value="{{ $review->product_id }}">
                     <input type="hidden" name="user_id" value="{{ $review->user_id }}">
-                    <input type="hidden" name="old_image_path" value="{{ $review->product->image_path }}">
 
                     <div class="form-group">
                         <button type="submit" class="btn submit-button w-100 text-white">
