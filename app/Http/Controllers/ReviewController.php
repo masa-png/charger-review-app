@@ -6,7 +6,6 @@ use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ProductController;
 use App\Http\Requests\ReviewRequest;
 use Illuminate\Support\Facades\Storage;
 
