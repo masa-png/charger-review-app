@@ -1,9 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mt-4">
-        <img src="{{ asset('img/desk.jpg') }}" class="img-fluid">
+    <div class="mainvisual-wrapper">
+        <img src="{{ asset('img/desk.jpeg') }}" class="img-fluid">
+        <div class="container mainvisual-text-box text-center">
+            <h1 class="text-white">
+                愛用の充電器を見つけよう！
+            </h1>
+            <p class="text-white lh-lg">ChargerReviewは、<br>
+                愛用している充電器のレビューができるサイトです。
+            </p>
+        </div>
     </div>
+
+    {{-- 新着記事 --}}
+    <section class="pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg12 text-center">
+                    <h1 class="mb-4 sec-title">新着記事</h1>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-5 mb-4">
+                @foreach ($recently_reviews as $recently_review)
+                    <div class="col">
+                        <div class="card h-100">
+                            <a href="{{ route('reviews.index', ['review' => $recently_review->id]) }}">
+                                <img src="{{ $recently_review->image_path ? $recently_review->image_path : asset('img/IMG_0835.jpeg') }}"
+                                    class="img-thumbnail card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">メーカー名 {{ $recently_review->vendor->name }}</h4>
+                                <h4 class="card-subtitle mb-2 text-body-secondary">{{ $recently_review->name }}</h4>
+                                <p class="card-title">種類 {{ $recently_review->type->name }}タイプ</p>
+                                <p class="card-title">W数 {{ $recently_review->wattage->watt }}W</p>
+                                <label class="card-title">¥{{ number_format($recently_review->price) }}</label><br>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-body-secondary">{{ $recently_review->created_at }}</small>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="row text-end">
+                <a href="{{ route('products.index') }}"><button class="btn btn-primary">もっと見る</button></a>
+            </div>
+        </div>
+    </section>
 
     {{-- USB PDとは？ --}}
     <section class="explanation my-5 py-5">
@@ -81,8 +125,8 @@
                     </a>
                 </div>
                 <div>
-                    <a href="{{ route('products.index') }}"><img class="img-thumbnail" src="{{ asset('img/tabletop.jpg') }}"
-                            alt="卓上タイプ"></a>
+                    <a href="{{ route('products.index') }}"><img class="img-thumbnail"
+                            src="{{ asset('img/tabletop.jpg') }}" alt="卓上タイプ"></a>
                     <a href="{{ route('products.index') }}">
                         <p>卓上タイプ</p>
                     </a>
