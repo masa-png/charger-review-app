@@ -1,4 +1,4 @@
-var $slide =  $(".slide")
+var $slide = $(".slide")
   .slick({
         fade: true,
         speed: 2500,
