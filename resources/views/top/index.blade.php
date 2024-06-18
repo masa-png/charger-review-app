@@ -55,8 +55,8 @@
                     </div>
                 @endforeach
             </div>
-            <div class="row text-end">
-                <a href="{{ route('products.index') }}"><button class="btn btn-primary">もっと見る</button></a>
+            <div class="mt-3 text-end">
+                <a href="{{ route('products.index') }}" class="more-button text-white">もっと見る</a>
             </div>
         </div>
     </section>
@@ -66,7 +66,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg12 text-center">
-                    <h1 class="mb-4 sec-title">USB PDとは？</h1>
+                    <h1 class="mb-4 sec-title">USB PDについて!?</h1>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 <div class="col-md-6">
                     <h1 style="color: #C60E31;" class="fw-bold my-3">01</h1>
                     <h2>USB PDとは「USB Power Delivery」の略称！</h2>
-                    <p>USB規格を作成している団体によって定められた、Type-Cに<br>
+                    <p class="lh-lg">USB規格を作成している団体によって定められた、Type-Cに<br>
                         対応した給電規格のこと。最大100Wの電力を供給できるよう<br>
                         に規格されています。
                     </p><br>
@@ -91,7 +91,7 @@
                 <div class="col-md-6 order-2 order-md-1">
                     <h1 style="color: #C60E31" class="fw-bold my-3">02</h1>
                     <h2>USB PDのメリット！</h2>
-                    <p>対応機器を接続するだけでUSB PD規格による急速充電を<br>
+                    <p class="lh-lg">対応機器を接続するだけでUSB PD規格による急速充電を<br>
                         自動的に行うことが出来る。接続機器側は充電器側の<br>
                         供給能力以上の電力を要求しないため、安全に使用することができます。
                     </p>
@@ -108,7 +108,7 @@
                 <div class="col-md-6">
                     <h1 style="color: #C60E31" class="fw-bold my-3">03</h1>
                     <h2>USB PD対応の充電器を選ぶ際の注意点！</h2>
-                    <p>特に消費電力の大きいノートパソコンなどは、機器側が<br>
+                    <p class="lh-lg">特に消費電力の大きいノートパソコンなどは、機器側が<br>
                         必要とする電力に充電器側が対応しているか「W数を」<br>
                         確認するようにしましょう！
                     </p>
