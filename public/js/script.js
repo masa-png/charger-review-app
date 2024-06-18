@@ -1,3 +1,15 @@
+var $slide =  $(".slide")
+  .slick({
+        fade: true,
+        speed: 2500,
+        autoplaySpeed: 4500,
+        arrows: false,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true
+    });
+
 $(document).ready(function() {
     $('.multiple-items').slick( {
         slidesToShow: 3,

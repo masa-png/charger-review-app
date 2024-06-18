@@ -1,15 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mainvisual-wrapper">
-        <img src="{{ asset('img/desk.jpeg') }}" class="img-fluid">
-        <div class="container mainvisual-text-box text-center">
-            <h1 class="text-white">
-                愛用の充電器を見つけよう！
-            </h1>
-            <p class="text-white lh-lg">ChargerReviewは、<br>
-                愛用している充電器のレビューができるサイトです。
-            </p>
+    <div class="mainvisual-wrapper mb-5 pb-5">
+        <ul class="slide p-0">
+            <li class="item">
+                <img src="{{ asset('img/desk.jpeg') }}" class="w-100 img-fluid">
+            </li>
+            <li class="item">
+                <img src="{{ asset('img/desk2.jpg') }}" class="w-100 img-fluid">
+            </li>
+        </ul>
+        <div class="container mainvisual-text-box">
+            <div class="row justify-content-center">
+                <div class="col-8 mainvisual-text-content">
+                    <h1 class="text-white mb-3 lh-lg">
+                        愛用の充電器を見つけよう！<br>
+                        レビュー投稿しよう！！
+                    </h1>
+                    <p class="text-white lh-lg">ChargerReviewは、<br>
+                        愛用している充電器のレビュー投稿ができるサイトです。
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 

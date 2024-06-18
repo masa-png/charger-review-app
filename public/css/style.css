@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    font-family: 'メイリオ', 'Meiryo',
+    font-family: 'Noto Sans JP', 'メイリオ', 'Meiryo',
         'Hiragino Kaku Gothic ProN',
         'ヒラギノ角ゴ ProN W3',
         sans-serif;
@@ -57,26 +57,29 @@ footer {
 }
 
 .mainvisual-wrapper {
-    min-height: 100vh;
     position: relative;
     box-sizing: border-box;
 }
 
-.mainvisual-wrapper > img {
-    width: 100%;
-    height: 500px;
+.item > img {
+    height: 520px;
     object-fit: cover;
 }
 
 .mainvisual-text-box {
     position: absolute;
     width: 100%;
-    top: 200px;
+    top: 150px;
     z-index: 10;
 }
 
-.mainvisual-text-box p {
+.mainvisual-text-content > h1 {
+    text-shadow: 0.25rem 0.25rem 1rem rgb(0 0 0 / 60%);
+}
+
+.mainvisual-text-content > p {
     font-size: 16px;
+    text-shadow: 0.25rem 0.25rem 1rem rgb(0 0 0 / 60%);
 }
 
 .explanation {
@@ -282,6 +285,12 @@ footer {
     transition: 0.1s;
 }
 
+.submit-button:hover,
+.reply-button:hover,
+.comment-button:hover {
+    opacity: 0.8;
+}
+
 .nav-link {
     font-weight: bold;
     font-stretch: normal;
@@ -299,11 +308,6 @@ footer {
 .nav-link:hover {
     opacity: 0.8;
     color: #00BCC5;
-}
-
-.submit-button:hover,
-.reply-button:hover {
-    opacity: 0.8;
 }
 
 .review-score-color {
