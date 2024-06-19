@@ -1,45 +1,93 @@
 @extends('layouts.app')
 @section('content')
     <div class="container my-5">
-        <div class="row">
-            <div class="col-md-2">
-                @component('components.sidebar', ['vendors' => $vendors, 'wattages' => $wattages])
-                @endcomponent
-            </div>
-            <div class="col-md-10">
-                @if ($vendor !== null)
-                    <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">投稿一覧</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $vendor->name }}</li>
-                        </ol>
-                    </nav>
-                    <h2 class="mb-4">{{ $vendor->name }}の投稿一覧{{ $products->count() }}件</h2>
-                @elseif ($wattage !== null)
-                    <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">投稿一覧</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $wattage->watt }}</li>
-                        </ol>
-                    </nav>
-                    <h2 class="mb-4">{{ $wattage->watt }}Wの投稿一覧{{ $products->count() }}件</h2>
-                @elseif ($keyword !== null)
-                    <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">投稿一覧</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $keyword }}</li>
-                        </ol>
-                    </nav>
-                    <h2 class="mb-4">{{ $keyword }}の検索結果{{ $products->count() }}件</h2>
-                @else
-                    <h2 class="pt-5 mb-4">投稿一覧</h2>
-                @endif
+        <div class="row justify-content-center">
+            <nav class="my-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('top') }}">トップ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">投稿一覧</li>
+                </ol>
+            </nav>
 
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-header">メーカー名で探す</div>
+                    <div class="card-body">
+                        <form action="{{ route('products.index') }}" method="GET">
+                            <div class="form-group mb-3">
+                                <select name="vendor" class="form-control form-select" required>
+                                    <option value="" hidden>選択してください</option>
+                                    @foreach ($vendors as $vendor)
+                                        @if ($vendor->id == $vendor_id)
+                                            <option value="{{ $vendor->id }}" selected>{{ $vendor->name }}</option>
+                                        @else
+                                            <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">W数で探す</div>
+                    <div class="card-body">
+                        <form action="{{ route('products.index') }}" method="GET">
+                            <div class="form-group mb-3">
+                                <select name="wattage" class="form-control form-select" required>
+                                    <option value="" hidden>選択してください</option>
+                                    @foreach ($wattages as $wattage)
+                                        @if ($wattage->id == $wattage_id)
+                                            <option value="{{ $wattage->id }}" selected>{{ $wattage->watt }}W</option>
+                                        @else
+                                            <option value="{{ $wattage->id }}">{{ $wattage->watt }}W</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">種類で探す</div>
+                    <div class="card-body">
+                        <form action="{{ route('products.index') }}" method="GET">
+                            <div class="form-group mb-3">
+                                <select name="type" class="form-control form-select" required>
+                                    <option value="" hidden>選択してください</option>
+                                    @foreach ($types as $type)
+                                        @if ($type->id == $type_id)
+                                            <option value="{{ $type->id }}" selected>{{ $type->name }}タイプ</option>
+                                        @else
+                                            <option value="{{ $type->id }}">{{ $type->name }}タイプ</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
                 @if (session('flash_message'))
                     <div class="alert alert-info">
                         {{ session('flash_message') }}
                     </div>
                 @endif
+
+                <h2 class="mb-3">{{ $products->count() }}件の記事が見つかりました</h2>
 
                 <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
                     @foreach ($products as $product)

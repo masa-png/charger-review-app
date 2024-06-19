@@ -17,36 +17,26 @@ class ProductController extends Controller
     {
         $keyword = $request->keyword;
 
-        if ($request->vendor !== null) {
-            $products = Product::where('vendor_id', $request->vendor)->paginate(6);
-            $vendor = Vendor::find($request->vendor);
-            $wattage = null;
-            $type = null;
-        } elseif ($request->wattage !== null) {
-            $products = Product::where('wattage_id', $request->wattage)->paginate(6);
-            $wattage = Wattage::find($request->wattage);
-            $vendor = null;
-            $type = null;
-        } elseif ($request->type !== null) {
-            $products = Product::where('type_id', $request->type)->paginate(6);
-            $type = Type::find($request->type);
-            $vendor = null;
-            $wattage = null;
+        $vendor_id = $request->vendor;
+        $wattage_id = $request->wattage;
+        $type_id = $request->type;
+
+        if ($vendor_id !== null) {
+            $products = Product::where('vendor_id', $vendor_id)->paginate(6);
+        } elseif ($wattage_id !== null) {
+            $products = Product::where('wattage_id', $wattage_id)->paginate(6);
+        } elseif ($type_id !== null) {
+            $products = Product::where('type_id', $type_id)->paginate(6);
         } elseif ($keyword !== null) {
             $products = Product::where('name', 'like', "%{$keyword}%")->paginate(6);
-            $vendor = null;
-            $wattage = null;
-            $type = null;
         } else {
             $products = Product::paginate(6);
-            $vendor = null;
-            $wattage = null;
-            $type = null;
         }
 
         $vendors = Vendor::all();
         $wattages = Wattage::all();
+        $types = Type::all();
 
-        return view('products.index', compact('products', 'vendor', 'vendors', 'wattage', 'wattages', 'type', 'keyword'));
+        return view('products.index', compact('products', 'vendor_id', 'vendors', 'wattage_id', 'wattages', 'type_id', 'types', 'keyword'));
     }
 }
