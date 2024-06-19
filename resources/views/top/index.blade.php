@@ -129,41 +129,15 @@
 
         <div class="container mt-5">
             <div class="multiple-items text-center">
-                <div>
-                    <a href="{{ route('products.index') }}"><img class="img-thumbnail" src="{{ asset('img/wall.jpg') }}"
-                            alt="壁挿しタイプ"></a>
-                    <a href="{{ route('products.index') }}">
-                        <p>壁挿しタイプ</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('products.index') }}"><img class="img-thumbnail"
-                            src="{{ asset('img/tabletop.jpg') }}" alt="卓上タイプ"></a>
-                    <a href="{{ route('products.index') }}">
-                        <p>卓上タイプ</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('products.index') }}"><img class="img-thumbnail"
-                            src="{{ asset('img/wireless.jpg') }}" alt="ワイヤレスタイプ"></a>
-                    <a href="{{ route('products.index') }}">
-                        <p>ワイヤレスタイプ</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('products.index') }}"><img class="img-thumbnail"
-                            src="{{ asset('img/studio-mag.jpg') }}" alt="マグネットタイプ"></a>
-                    <a href="{{ route('products.index') }}">
-                        <p>マグネットタイプ</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="{{ route('products.index') }}"><img class="img-thumbnail"
-                            src="{{ asset('img/station.jpg') }}" alt="ステーションタイプ"></a>
-                    <a href="{{ route('products.index') }}">
-                        <p>ステーションタイプ</p>
-                    </a>
-                </div>
+                @foreach ($types as $type)
+                    <div>
+                        <a href="{{ route('products.index', ['type' => $type->id]) }}"><img class="img-thumbnail"
+                                src="{{ asset('img/') }}/{{ $type->name }}.jpg"></a>
+                        <a href="{{ route('products.index', ['type' => $type->id]) }}">
+                            <p>{{ $type->name }}タイプ</p>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
