@@ -115,11 +115,6 @@
                 <div class="d-flex justify-content-between flex-wrap">
                     <h2 class="mb-3">
                         {{ $products->total() }}件の記事が見つかりました
-                        <span class="fs-6">
-                            @if ($products->total() > 6)
-                                ({{ 6 * $products->currentPage() - 5 }}〜{{ 6 * $products->currentPage() }}件)
-                            @endif
-                        </span>
                     </h2>
                     <form action="{{ route('products.index') }}" method="GET" class="mb-3">
                         @if ($keyword)
@@ -155,7 +150,7 @@
                         <div class="col">
                             <div class="card h-100">
                                 <a href="{{ route('reviews.index', ['review' => $product->id]) }}">
-                                    <img src="{{ $product->image_path ? $product->image_path : asset('img/IMG_0835.jpeg') }}"
+                                    <img src="{{ $product->image_path ? $product->image_path : asset('img/壁挿し.jpg') }}"
                                         class="img-thumbnail card-img-top">
                                 </a>
                                 <div class="card-body">
