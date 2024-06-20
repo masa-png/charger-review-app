@@ -7,7 +7,7 @@
             </a>
             <form action="{{ route('products.index') }}" method="GET">
                 <div class="d-flex">
-                    <input class="form-control header-search-input me-1" placeholder="何をお探しですか？" name="keyword">
+                    <input class="form-control header-search-input me-1" placeholder="商品名・メーカー名" name="keyword">
                     <button type="submit" class="btn header-search-button"><i
                             class="fas fa-search header-search-icon"></i></button>
                 </div>
@@ -29,13 +29,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end align-items-center flex-grow-1 pe-3">
+                    <ul class="navbar-nav justify-content-end align-items-center flex-grow-1">
                         @guest
                             <li class="nav-item me-4">
                                 <a href="{{ route('top') }}" class="nav-link fw-bold">TOP</a>
                             </li>
-                            <li class="nav-item me-4">
-                                <a href="{{ route('login') }}" class="nav-link fw-bold">ログイン</a>
+                            <li class="nav-item me-4 dropdown">
+                                <a class="nav-link dropdown-toggle fw-bold" href="{{ route('login') }}" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    ログイン
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">ログインページへ</a></li>
+                                    <li><a href="{{ route('register') }}" class="dropdown-item">新規登録</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item me-4">
                                 <a href="{{ route('products.index') }}" class="nav-link fw-bold">投稿一覧</a>
