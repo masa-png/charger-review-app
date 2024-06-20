@@ -32,7 +32,7 @@
 
                     <div class="form-group mb-3">
                         <input list="product_list" name="name"
-                            class="form-control @error('name') is-invalid @enderror review-input"
+                            class="form-control form-select review-input @error('name') is-invalid @enderror"
                             value="{{ $review->product->name, old('name') }}" placeholder="商品名" required>
 
                         <datalist id="product_list">
@@ -77,17 +77,16 @@
                             value="{{ $review->product->price, old('price') }}" required placeholder="値段">
                     </div>
 
-                    {{-- <div class="form-group mb-3">
-                        <input type="text" class="form-control review-input" placeholder="商品のリンク先">
-                    </div> --}}
-
                     <div class="form-group mb-3">
                         <select name="score" class="form-select review-input review-score-color" aria-label="★評価">
-                            <option value="5">★★★★★</option>
-                            <option value="4">★★★★</option>
-                            <option value="3">★★★</option>
-                            <option value="2">★★</option>
-                            <option value="1">★</option>
+                            @for ($i = 5; $i >= 1; $i--)
+                                @if ($i == $review->score)
+                                    <option value="{{ $i }}" selected>{{ str_repeat('★', $review->score) }}
+                                    </option>
+                                @else
+                                    <option value="{{ $i }}">{{ str_repeat('★', $i) }}</option>
+                                @endif
+                            @endfor
                         </select>
                     </div>
 
