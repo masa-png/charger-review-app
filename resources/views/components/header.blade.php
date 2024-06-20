@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container">
-            <a class="navber-brand nav-link me-3" href="{{ url('/') }}">
+            <a class="navber-brand nav-link me-3 fs-4" href="{{ url('/') }}">
                 {{-- <img src="{{ asset('img/logo.jpg') }}"> --}}
                 {{ config('app.name', 'Laravel') }}
             </a>
