@@ -131,9 +131,9 @@
             <div class="multiple-items text-center">
                 @foreach ($types as $type)
                     <div>
-                        <a href="{{ route('products.index', ['type' => $type->id]) }}"><img class="img-thumbnail"
+                        <a href="{{ route('products.index', ['type_id' => $type->id]) }}"><img class="img-thumbnail"
                                 src="{{ asset('img/') }}/{{ $type->name }}.jpg"></a>
-                        <a href="{{ route('products.index', ['type' => $type->id]) }}">
+                        <a href="{{ route('products.index', ['type_id' => $type->id]) }}">
                             <p>{{ $type->name }}タイプ</p>
                         </a>
                     </div>

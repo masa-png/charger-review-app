@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <form action="{{ route('products.index') }}" method="GET">
                             <div class="form-group mb-3">
-                                <select name="vendor" class="form-control form-select" required>
+                                <select name="vendor_id" class="form-control form-select" required>
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($vendors as $vendor)
                                         @if ($vendor->id == $vendor_id)
@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <form action="{{ route('products.index') }}" method="GET">
                             <div class="form-group mb-3">
-                                <select name="wattage" class="form-control form-select" required>
+                                <select name="wattage_id" class="form-control form-select" required>
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($wattages as $wattage)
                                         @if ($wattage->id == $wattage_id)
@@ -61,7 +61,7 @@
                     <div class="card-body">
                         <form action="{{ route('products.index') }}" method="GET">
                             <div class="form-group mb-3">
-                                <select name="type" class="form-control form-select" required>
+                                <select name="type_id" class="form-control form-select" required>
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($types as $type)
                                         @if ($type->id == $type_id)
@@ -70,6 +70,31 @@
                                             <option value="{{ $type->id }}">{{ $type->name }}タイプ</option>
                                         @endif
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">価格で探す</div>
+                    <div class="card-body">
+                        <form action="{{ route('products.index') }}" method="GET">
+                            <div class="form-group mb-3">
+                                <select name="price" class="form-control form-select" required>
+                                    <option value="" hidden>選択してください</option>
+                                    @for ($i = 0; $i < 100; $i++)
+                                        {{ $each_price = 500 + 500 * $i }}
+                                        @if ($each_price == $price)
+                                            <option value="{{ $each_price }}" selected>{{ number_format($each_price) }}円
+                                            </option>
+                                        @else
+                                            <option value="{{ $each_price }}">{{ number_format($each_price) }}円</option>
+                                        @endif
+                                    @endfor
                                 </select>
                             </div>
                             <div class="form-group">
@@ -87,7 +112,43 @@
                     </div>
                 @endif
 
-                <h2 class="mb-3">{{ $products->count() }}件の記事が見つかりました</h2>
+                <div class="d-flex justify-content-between flex-wrap">
+                    <h2 class="mb-3">
+                        {{ $products->total() }}件の記事が見つかりました
+                        <span class="fs-6">
+                            @if ($products->total() > 6)
+                                ({{ 6 * $products->currentPage() - 5 }}〜{{ 6 * $products->currentPage() }}件)
+                            @endif
+                        </span>
+                    </h2>
+                    <form action="{{ route('products.index') }}" method="GET" class="mb-3">
+                        @if ($keyword)
+                            <input type="hidden" name="keyword" value="{{ $keyword }}">
+                        @endif
+                        @if ($vendor_id)
+                            <input type="hidden" name="vendor_id" value="{{ $vendor_id }}">
+                        @endif
+                        @if ($wattage_id)
+                            <input type="hidden" name="wattage_id" value="{{ $wattage_id }}">
+                        @endif
+                        @if ($type_id)
+                            <input type="hidden" name="type_id" value="{{ $type_id }}">
+                        @endif
+                        @if ($price)
+                            <input type="hidden" name="price" value="{{ $price }}">
+                        @endif
+                        <select class="form-select form-select-sm" name="select_sort" aria-label=".form-select-sm example"
+                            onChange="this.form.submit();">
+                            @foreach ($sorts as $key => $value)
+                                @if ($sorted === $value)
+                                    <option value="{{ $value }}" selected>{{ $key }}</option>
+                                @else
+                                    <option value="{{ $value }}">{{ $key }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
 
                 <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
                     @foreach ($products as $product)
