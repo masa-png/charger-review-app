@@ -149,6 +149,11 @@ footer {
     z-index: 1;
 }
 
+.slick-prev {
+    left: 0;
+
+}
+
 .slick-next {
     right: 0;
 }
@@ -160,9 +165,9 @@ footer {
 
 .slick-prev:before,
 .slick-next::before {
-    font-size: 58px;
+    font-size: 40px;
     opacity: 0.8;
-    color: #434343;
+    color: #F9F9FA;
 }
 /* カルーセルスライダーここまで */
 
