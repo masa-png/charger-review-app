@@ -32,12 +32,23 @@
                 {{-- コメント欄 --}}
                 <div class="comment-area form-group">
                     @guest
-                        <div class="mb-4">
-                            <h5>ユーザー登録していただくとレビューに対してコメントができます。</h5>
+                        <div class="card text-center mb-4">
+                            <div class="card-body mb-4">
+                                <h5 class="fw-bold">ユーザー登録していただくとレビューに対してコメントができます</h5>
+                                <div class="d-flex justify-content-center">
+                                    <div class="mt-4 me-4">
+                                        <a href="{{ route('register') }}" class="btn more-button text-white">新規登録</a>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a href="{{ route('login') }}" class="btn btn-secondary text-white">ログイン</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    @else
-                        <h5 class="fw-bold">{{ $review->comments->count() }}件のコメント</h5>
+                    @endguest
 
+                    <h5 class="fw-bold">{{ $review->comments->count() }}件のコメント</h5>
+                    @auth
                         <form action="{{ route('comments.store', $review) }}" method="POST">
                             @csrf
                             <textarea name="content" class="form-control input-comment" rows="1" placeholder="コメントする..."></textarea>
@@ -45,15 +56,14 @@
                                 <button type="submit" class="btn comment-button text-white" disabled>コメント</button>
                             </div>
                         </form>
-                    </div>
-
-                    <div class="comment-container mt-5">
-                        @foreach ($review->comments as $comment)
-                            @component('components.comment', ['comment' => $comment, 'review' => $review])
-                            @endcomponent
-                        @endforeach
-                    </div>
-                @endguest
+                    @endauth
+                </div>
+                <div class="comment-container mt-5">
+                    @foreach ($review->comments as $comment)
+                        @component('components.comment', ['comment' => $comment, 'review' => $review])
+                        @endcomponent
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

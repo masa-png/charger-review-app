@@ -113,13 +113,12 @@ footer {
 
 .more-button {
     display: inline-block;
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-    font-weight: bold;
+    width: 96px;
+    height: 34px;
+    font-size: 14px;
     background-color: #00BCC5 !important;
     border-radius: 4px;
-    padding: 8px;
+    padding: 5.25px 10.5px;
     transition: 0.1s;
 }
 

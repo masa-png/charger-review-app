@@ -56,7 +56,7 @@
                 @endforeach
             </div>
             <div class="mt-3 text-end">
-                <a href="{{ route('products.index') }}" class="more-button text-white">もっと見る</a>
+                <a href="{{ route('products.index') }}" class="btn more-button text-white">もっと見る</a>
             </div>
         </div>
     </section>
