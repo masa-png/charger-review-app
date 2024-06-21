@@ -8,7 +8,6 @@ body {
         'ヒラギノ角ゴ ProN W3',
         sans-serif;
     font-size: 14px;
-    font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
@@ -44,15 +43,16 @@ header > nav {
 
 footer {
     width: 100%;
-    height: 56px;
+    height: 240px;
     background-color: #434343;
     position: absolute;
     bottom: 0;
+    padding: 50px 15px;
 }
 
 .wrapper {
     min-height: 100vh;
-    padding-bottom: 56px;
+    padding-bottom: 240px;
     position: relative;
     box-sizing: border-box;
 }

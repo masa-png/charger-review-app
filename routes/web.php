@@ -6,6 +6,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TermController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/', [TopController::class, 'index'])->name('top');
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
 
 Route::get('reviews', [ReviewController::class, 'index'])->name('reviews.index');
+
+Route::get('terms', [TermController::class, 'index'])->name('terms.index');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
