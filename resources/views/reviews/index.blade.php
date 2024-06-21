@@ -24,7 +24,7 @@
                     <h3 class="fw-bold">{{ $review->title }}</h3>
                     <p class="fs-5 mb-2"><span class="review-score-color">{{ str_repeat('★', $review->score) }}</span><span
                             class="review-score-blank-color">{{ str_repeat('★', 5 - $review->score) }}</span></p>
-                    <p>{{ $review->content }}</p>
+                    <h5>{{ $review->content }}</h5>
                     <p><span class="fw-bold me-2">{{ $review->user->name }}</span><span
                             class="text-muted">{{ $review->created_at }}</span></p>
                 </div>
