@@ -14,7 +14,7 @@
                 <div class="container mt-3">
                     <div class="card text-center m-auto py-3 px-3" style="width: 26rem;">
                         <div class="img-box">
-                            <img src="{{ $user->image_path ? $user->image_path : asset('img/IMG_0835.jpeg') }}"
+                            <img src="{{ $user->image_path ? $user->image_path : url('https://product-review-user.s3.ap-northeast-1.amazonaws.com/profiles/79AAE03E-12F1-4833-8B88-F57CC41C5D69_1_201_a.jpeg') }}"
                                 class="card-img-top rounded-circle w-50" alt="プロフィール画像">
                         </div>
                         <form action="{{ route('mypage.update_image') }}" method="POST" enctype="multipart/form-data">
