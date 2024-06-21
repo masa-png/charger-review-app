@@ -33,7 +33,7 @@
                     <h1 class="mb-4 sec-title">新着記事</h1>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-5 mb-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
                 @foreach ($recently_reviews as $recently_review)
                     <div class="col">
                         <div class="card h-100">
