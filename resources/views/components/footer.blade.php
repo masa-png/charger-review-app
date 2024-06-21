@@ -19,9 +19,13 @@
         @endguest
     </div>
 
-    <div class="d-flex justify-content-center mb-5">
+    <div class="d-flex justify-content-center mb-4">
         <a href="{{ route('terms.index') }}" class="me-3">利用規約</a>
         <a href="{{ route('contact.index') }}">お問い合わせ</a>
+    </div>
+
+    <div class="d-flex justify-content-center mb-5">
+        <a href="{{ route('privacypolicy.index') }}" class="me-3">プライバシーポリシー</a>
     </div>
 
     <div class="d-flex justify-content-center">

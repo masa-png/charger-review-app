@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\UserController;
@@ -29,6 +30,7 @@ Route::get('products', [ProductController::class, 'index'])->name('products.inde
 Route::get('reviews', [ReviewController::class, 'index'])->name('reviews.index');
 
 Route::get('terms', [TermController::class, 'index'])->name('terms.index');
+Route::get('privacypolicy', [PrivacyController::class, 'index'])->name('privacypolicy.index');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
