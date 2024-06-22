@@ -15,12 +15,19 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $pricelist = [
+            '2000円未満' => '0,2000',
+            '2000円〜5000円' => '2000,5000',
+            '5000円〜10000円' => '5000,10000',
+            '10000円以上' => '10000,200000'
+        ];
+
         $keyword = $request->keyword;
 
         $vendor_id = $request->vendor_id;
         $wattage_id = $request->wattage_id;
         $type_id = $request->type_id;
-        $price = $request->price;
+        $price_selection = $request->price;
 
         $sorts = [
             '投稿日が新しい順' => 'created_at desc',
@@ -48,22 +55,30 @@ class ProductController extends Controller
                 })
                 ->orWhere('name', 'like', "%{$keyword}%")
                 ->sortable($sort_query)->orderBy('created_at', 'desc')->paginate(6);
-        } elseif ($vendor_id !== null) {
-            $products = Product::where('vendor_id', $vendor_id)->sortable($sort_query)->orderBy('created_at', 'desc')->paginate(6);
-        } elseif ($wattage_id !== null) {
-            $products = Product::where('wattage_id', $wattage_id)->sortable($sort_query)->orderBy('created_at', 'desc')->paginate(6);
-        } elseif ($type_id !== null) {
-            $products = Product::where('type_id', $type_id)->sortable($sort_query)->orderBy('created_at', 'desc')->paginate(6);
-        } elseif ($price !== null) {
-            $products = Product::where('price', '<=', $price)->sortable($sort_query)->orderBy('created_at', 'desc')->paginate(6);
         } else {
-            $products = Product::sortable($sort_query)->orderBy('created_at', 'desc')->paginate(6);
+            $query = Product::query();
+
+            if ($vendor_id !== null) {
+                $query->where('vendor_id', $vendor_id);
+            }
+            if ($wattage_id !== null) {
+                $query->where('wattage_id', $wattage_id);
+            }
+            if ($type_id !== null) {
+                $query->where('type_id', $type_id);
+            }
+            if ($price_selection !== null) {
+                $priceArray = explode(',', $price_selection);
+                $query->whereBetween('price', $priceArray);
+            }
+            $query->sortable($sort_query)->orderBy('created_at', 'desc');
+            $products = $query->paginate(6);
         }
 
         $vendors = Vendor::all();
         $wattages = Wattage::all();
         $types = Type::all();
 
-        return view('products.index', compact('products', 'vendor_id', 'vendors', 'wattage_id', 'wattages', 'type_id', 'types', 'price', 'keyword', 'sorts', 'sorted'));
+        return view('products.index', compact('products', 'pricelist', 'vendor_id', 'vendors', 'wattage_id', 'wattages', 'type_id', 'types', 'price_selection', 'keyword', 'sorts', 'sorted'));
     }
 }

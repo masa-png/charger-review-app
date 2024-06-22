@@ -10,12 +10,12 @@
             </nav>
 
             <div class="col-md-3">
-                <div class="card mb-4">
-                    <div class="card-header">メーカー名で探す</div>
-                    <div class="card-body">
-                        <form action="{{ route('products.index') }}" method="GET">
+                <form action="{{ route('products.index') }}" method="GET">
+                    <div class="card mb-4">
+                        <div class="card-header">メーカー名で探す</div>
+                        <div class="card-body">
                             <div class="form-group mb-3">
-                                <select name="vendor_id" class="form-control form-select" required>
+                                <select name="vendor_id" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($vendors as $vendor)
                                         @if ($vendor->id == $vendor_id)
@@ -26,19 +26,14 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card mb-4">
-                    <div class="card-header">W数で探す</div>
-                    <div class="card-body">
-                        <form action="{{ route('products.index') }}" method="GET">
+                    <div class="card mb-4">
+                        <div class="card-header">W数で探す</div>
+                        <div class="card-body">
                             <div class="form-group mb-3">
-                                <select name="wattage_id" class="form-control form-select" required>
+                                <select name="wattage_id" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($wattages as $wattage)
                                         @if ($wattage->id == $wattage_id)
@@ -49,60 +44,49 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card mb-4">
-                    <div class="card-header">種類で探す</div>
-                    <div class="card-body">
-                        <form action="{{ route('products.index') }}" method="GET">
+                    <div class="card mb-4">
+                        <div class="card-header">種類で探す</div>
+                        <div class="card-body">
                             <div class="form-group mb-3">
-                                <select name="type_id" class="form-control form-select" required>
+                                <select name="type_id" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($types as $type)
                                         @if ($type->id == $type_id)
-                                            <option value="{{ $type->id }}" selected>{{ $type->name }}タイプ</option>
+                                            <option value="{{ $type->id }}" selected>{{ $type->name }}タイプ
+                                            </option>
                                         @else
                                             <option value="{{ $type->id }}">{{ $type->name }}タイプ</option>
                                         @endif
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card mb-4">
-                    <div class="card-header">価格で探す</div>
-                    <div class="card-body">
-                        <form action="{{ route('products.index') }}" method="GET">
+                    <div class="card mb-4">
+                        <div class="card-header">価格で探す</div>
+                        <div class="card-body">
                             <div class="form-group mb-3">
-                                <select name="price" class="form-control form-select" required>
+                                <select name="price" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
-                                    @for ($i = 0; $i < 100; $i++)
-                                        {{ $each_price = 500 + 500 * $i }}
-                                        @if ($each_price == $price)
-                                            <option value="{{ $each_price }}" selected>{{ number_format($each_price) }}円
-                                            </option>
+                                    @foreach ($pricelist as $key => $price)
+                                        @if ($price_selection === $price)
+                                            <option value="{{ $price }}" selected>{{ $key }}</option>
                                         @else
-                                            <option value="{{ $each_price }}">{{ number_format($each_price) }}円</option>
+                                            <option value="{{ $price }}">{{ $key }}</option>
                                         @endif
-                                    @endfor
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group mb-5">
+                        <button type="submit" class="btn submit-button text-white shadow-sm w-100">検索</button>
+                    </div>
+                </form>
             </div>
 
             <div class="col-md-9">
