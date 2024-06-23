@@ -14,7 +14,7 @@
                     <div class="card mb-4">
                         <div class="card-header">メーカー名で探す</div>
                         <div class="card-body">
-                            <div class="form-group mb-3">
+                            <div class="form-group">
                                 <select name="vendor_id" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($vendors as $vendor)
@@ -32,7 +32,7 @@
                     <div class="card mb-4">
                         <div class="card-header">W数で探す</div>
                         <div class="card-body">
-                            <div class="form-group mb-3">
+                            <div class="form-group">
                                 <select name="wattage_id" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($wattages as $wattage)
@@ -50,7 +50,7 @@
                     <div class="card mb-4">
                         <div class="card-header">種類で探す</div>
                         <div class="card-body">
-                            <div class="form-group mb-3">
+                            <div class="form-group">
                                 <select name="type_id" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($types as $type)
@@ -69,7 +69,7 @@
                     <div class="card mb-4">
                         <div class="card-header">価格で探す</div>
                         <div class="card-body">
-                            <div class="form-group mb-3">
+                            <div class="form-group">
                                 <select name="price" class="form-control form-select">
                                     <option value="" hidden>選択してください</option>
                                     @foreach ($pricelist as $key => $price)
@@ -114,7 +114,7 @@
                             <input type="hidden" name="type_id" value="{{ $type_id }}">
                         @endif
                         @if ($price)
-                            <input type="hidden" name="price" value="{{ $price }}">
+                            <input type="hidden" name="price" value="{{ $price_selection }}">
                         @endif
                         <select class="form-select form-select-sm" name="select_sort" aria-label=".form-select-sm example"
                             onChange="this.form.submit();">
