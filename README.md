@@ -33,3 +33,13 @@
 ![画面遷移図](https://github.com/masa-png/charger-review-app/assets/97292904/335d3b58-3ae5-46e0-b773-2985616fd453)
 
 # 技術スタック
+- jQuery 3.6
+- Bootstrap 5.3
+- PHP 8.1
+- Laravel 10系
+- MySQL 8系
+- Apache
+- AWS
+   - S3
+- さくらのVPS
+　　-　ubuntu
